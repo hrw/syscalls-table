@@ -26,9 +26,9 @@ do
 
 	echo "
 #ifdef __NR_$syscall
-	printf('$syscall\\t%d\\n', __NR_$syscall);
+	printf('$syscall\\\t%d\\\n', __NR_$syscall);
 #else
-	printf('$syscall\\n');
+	printf('$syscall\\\n');
 #endif
 "
 done
