@@ -156,7 +156,7 @@ table.syscalls tbody tr.odd td {
     </p>
 
 <h2>Build info</h2>
-    <p>Table generated on <strong>{{ generate_time }} UTC</strong> using data from <strong>{{ kernel_version }}</strong> kernel source.</p>
+    <p>Table generated on <strong>{{ generate_time }} UTC</strong> using data from <strong>{{ syscalls.linux_version }}</strong> kernel source.</p>
 
 <table class="syscalls">
     <thead>
@@ -168,14 +168,14 @@ table.syscalls tbody tr.odd td {
         </tr>
     </thead>
     <tbody>
-{% for syscall in syscall_names %}
+{% for syscall_name in syscall_names %}
     <tr>
-        <td><a href='https://www.man7.org/linux/man-pages/man2/{{ syscall }}.2.html' title='{{ syscall }} manpage' >{{ syscall }}</a></td>
+        <td><a href='https://www.man7.org/linux/man-pages/man2/{{ syscall_name }}.2.html' title='{{ syscall_name }} manpage' >{{ syscall_name }}</a></td>
     {% for arch in archs %}
-        {% if syscall_data[syscall][arch] %}
-        <td>{{ syscall_data[syscall][arch] }}</td>
-        {% else %}
+        {% if syscalls[syscall_name][arch] == -1  %}
         <td class="legacy">-1</td>
+        {% else %}
+	<td>{{ syscalls[syscall_name][arch] }}</td>
         {% endif %}
     {% endfor %}
     </tr>
