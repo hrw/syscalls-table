@@ -16,6 +16,7 @@ from system_calls.tables.h8300 import syscalls_h8300
 from system_calls.tables.hexagon import syscalls_hexagon
 from system_calls.tables.i386 import syscalls_i386
 from system_calls.tables.ia64 import syscalls_ia64
+from system_calls.tables.loongarch64 import syscalls_loongarch64
 from system_calls.tables.m32r import syscalls_m32r
 from system_calls.tables.m68k import syscalls_m68k
 from system_calls.tables.metag import syscalls_metag
@@ -83,6 +84,7 @@ class syscalls(dict):
                 "hexagon": syscalls_hexagon,
                 "i386": syscalls_i386,
                 "ia64": syscalls_ia64,
+                "loongarch64": syscalls_loongarch64,
                 "m32r": syscalls_m32r,
                 "m68k": syscalls_m68k,
                 "metag": syscalls_metag,
