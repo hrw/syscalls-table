@@ -45,6 +45,7 @@ def load_syscall_data():
 
 def create_arch_list(present_archs):
 
+    # the main ones go first
     archs = [
         "arm64",
         "arm",
@@ -58,27 +59,18 @@ def create_arch_list(present_archs):
         "s390",
     ]
 
-    removed_archs = [
-        "avr32",
-        "blackfin",
-        "c6x",
-        "cris",
-        "frv",
-        "h8300",
-        "m32r",
-        "metag",
-        "mn10300",
-        "nds32",
-        "score",
-        "sh64",
-        "tile",
-        "tile64",
-        "unicore32",
-    ]
+    with open("archs-in-kernel", "r") as aikf:
+        archs_in_kernel = aikf.read()
+
+    removed_archs = []
 
     for arch in sorted(present_archs):
-        if arch not in removed_archs and arch not in archs:
+        if arch in archs:
+            continue
+        elif arch in archs_in_kernel:
             archs.append(arch)
+        else:
+            removed_archs.append(arch)
 
     for arch in removed_archs:
         archs.append(arch)

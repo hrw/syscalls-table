@@ -26,6 +26,7 @@ export_headers()
 generate_table() 
 {
 	echo -n "$arch "
+	echo $arch >> archs-in-kernel
 
 	if [ $bits == 32 ]; then
 		extraflags="${extraflags} -D__BITS_PER_LONG=32"
@@ -36,6 +37,7 @@ generate_table()
 	./list-syscalls > "tables/syscalls-$arch"
 }
 
+rm -f archs-in-kernel
 
 for archdir in $KERNELSRC/arch/*
 do 
