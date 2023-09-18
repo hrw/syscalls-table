@@ -3,6 +3,14 @@
 KERNELSRC=$1
 DATADIR=$PWD/data
 
+if [ -z $KERNELSRC ]; then
+	echo "give me path to Linux kernel sources:"
+	echo ""
+	echo "$0 path/to/Linux/kernel/sources"
+	echo ""
+	exit 1
+fi
+
 KVER=$(make -C ${KERNELSRC} kernelversion -s)
 TEMP=$(mktemp -d)
 
