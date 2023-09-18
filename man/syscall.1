@@ -1,0 +1,28 @@
+.TH syscall "1" "September 2021" "Python system-calls" "User Commands"
+.SH NAME
+syscall - check for Linux system call number and availability
+.SH DESCRIPTION
+usage: syscall [\-h] syscall arch
+.PP
+Check system call number/name.
+.SS "positional arguments:"
+.TP
+syscall
+system call number/name
+.TP
+arch
+requested architecture (optional)
+.SS "options:"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.SH EXAMPLES
+.EX
+syscall openat arm64
+.EX
+syscall 56
+.EX
+syscall 123 mipso32
+.SH "SEE ALSO"
+.BR syscall (2),
+.BR syscalls (2)
