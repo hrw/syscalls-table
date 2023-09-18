@@ -91,7 +91,6 @@ finit_module	1073742137
 flistxattr	1073742020
 flock	1073741897
 fork	1073741881
-fp_udfiex_crtl
 fremovexattr	1073742023
 fsconfig	1073742255
 fsetxattr	1073742014
