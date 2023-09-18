@@ -2,3 +2,12 @@ list-syscalls
 list-syscalls.c
 out/*
 headers
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pypi stuff
+dist
+*.egg-info
