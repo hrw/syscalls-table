@@ -46,6 +46,8 @@ from system_calls.tables.x32 import syscalls_x32
 from system_calls.tables.x86_64 import syscalls_x86_64
 from system_calls.tables.xtensa import syscalls_xtensa
 
+from system_calls.linux_version import linux_version
+
 
 class NoSuchSystemCall(Exception):
     """Exception will be called if asked for not existing system call."""
@@ -114,6 +116,7 @@ class syscalls(dict):
         }
 
         self.default_arch = os.uname().machine
+        self.linux_version = linux_version
 
     def __getitem__(self, syscall_name: str) -> int:
         """Returns number for requested system call.

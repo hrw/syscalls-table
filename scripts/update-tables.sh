@@ -205,6 +205,8 @@ create_tables_for_python()
 	echo "architectures = [" >> $TARGET_FILENAME
 	sed -e 's/^\(.*\)/    "\1",/g' data/architectures-present-in-kernel.text >> $TARGET_FILENAME
 	echo "]" >> $TARGET_FILENAME
+
+	echo "linux_version = \"${KVER}\"" > ${PYTHONDIR}/system_calls/linux_version.py
 }
 
 touch data/syscall-names.text
