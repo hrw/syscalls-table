@@ -9,5 +9,6 @@ __pycache__/
 *$py.class
 
 # Pypi stuff
+build
 dist
 *.egg-info
