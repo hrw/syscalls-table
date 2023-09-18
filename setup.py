@@ -7,16 +7,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="system-calls",
-    version="6.6.0",
+    version="6.6.1",
     author="Marcin Juszkiewicz",
     author_email="marcin-python@juszkiewicz.com.pl",
     description="Python module to check for system call number/name and"
     "availability",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/hrw/python-syscalls",
+    url="https://github.com/hrw/syscalls-table",
     project_urls={
-        "Bug Tracker": "https://github.com/hrw/python-syscalls/issues",
+        "Bug Tracker": "https://github.com/hrw/syscalls-table/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
