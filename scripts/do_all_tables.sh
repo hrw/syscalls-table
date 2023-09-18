@@ -2,25 +2,9 @@
 
 KERNELSRC=$1
 
-TMP=`mktemp`
-
-DEAD_SYSCALLS="afs_syscall|break|ftime|gtty|lock|mpx|oldwait4|prof|profil|putpmsg|security|stty|tuxcall|ulimit|vserver|arm_sync_file_range|utimesat|ni_syscall"
-
 export_headers()
 {
 	make -s -C ${KERNELSRC} ARCH=${arch} O=${PWD}/headers headers_install &>/dev/null
-
-
-	grep -E -h "^#define __NR_" ${PWD}/headers/usr/include/asm/unistd*.h ${PWD}/headers/usr/include/asm-generic/unistd.h |
-		grep -E -v "(unistd.h|NR3264|__NR_syscall|__SC_COMP|__NR_.*Linux|__NR_FAST)" |
-		grep -E -vi "(not implemented|available|unused|reserved|xtensa|spill)" |
-		grep -E -v "(__SYSCALL|SYSCALL_BASE|SYSCALL_MASK)" |
-		sed -e "s/#define\s*__NR_//g" -e "s/\s.*//g" |
-		grep -E -v -w $DEAD_SYSCALLS |
-		sort -u >${TMP}
-	cat syscall-names.text >>${TMP}
-	sed -i '/arch_specific_syscall/d' ${TMP}
-	LC_ALL=C sort -u ${TMP} >syscall-names.text
 }
 
 generate_table() 
