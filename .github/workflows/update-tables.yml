@@ -1,4 +1,4 @@
-name: Update Syscalls Tables
+name: Update system calls data
 
 on:
   workflow_dispatch:
@@ -22,30 +22,30 @@ jobs:
       - name: install x32 headers
         run: sudo apt-get install libc6-dev-x32
 
-      - name: Checkout syscalls-table ⤵️
+      - name: Checkout syscalls-table
         uses: actions/checkout@v4
         with:
           path: syscalls-table/
           ref: master
       
-      - name: Checkout linux ⤵️
+      - name: Checkout Linux
         uses: actions/checkout@v4
         with:
           path: linux
           repository: torvalds/linux
           
-      - name: Fetch linux version
+      - name: Update system calls data
+        working-directory: syscalls-table/
+        run: |
+          bash scripts/update-tables.sh $GITHUB_WORKSPACE/linux/
+          
+      - name: Check linux version
         working-directory: linux/
         run: |
           LINUX_VER=$(make kernelversion)
           echo "VERSION=$LINUX_VER" >> $GITHUB_ENV
-          
-      - name: Bump syscalls-tables
-        working-directory: syscalls-table/
-        run: |
-          bash scripts/update-tables.sh KERNELSRC=$GITHUB_WORKSPACE/linux/
-          
-      - name: Create Pull Request
+
+      - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
           path: syscalls-table/
