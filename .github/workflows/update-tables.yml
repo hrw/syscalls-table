@@ -6,9 +6,9 @@ on:
     - cron: '0 1 * * 2' # Each tuesday
   # also run on repo changes
   push:
-    branches: [ "devel" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "devel" ]
+    branches: [ "master" ]
 
 
 jobs:
