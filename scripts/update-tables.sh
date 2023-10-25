@@ -12,6 +12,11 @@ if [ -z $KERNELSRC ]; then
 	exit 1
 fi
 
+if [ ! -e ${KERNELSRC}/Makefile ]; then
+	echo "No Makefile in $KERNELSRC directory!"
+	exit 1
+fi
+
 KVER=$(make -C ${KERNELSRC} kernelversion -s)
 TEMP=$(mktemp -d)
 
