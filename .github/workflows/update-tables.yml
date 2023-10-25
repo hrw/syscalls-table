@@ -29,8 +29,10 @@ jobs:
           ref: master
       
       - name: Checkout linux ⤵️
-        run: |
-          git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux/ --depth=1
+        uses: actions/checkout@v4
+        with:
+          path: linux
+          repo: torvalds/linux
           
       - name: Fetch linux version
         working-directory: linux/
@@ -41,7 +43,7 @@ jobs:
       - name: Bump syscalls-tables
         working-directory: syscalls-table/
         run: |
-          make KERNELSRC=$GITHUB_WORKSPACE/linux/
+          bash scripts/update-tables.sh KERNELSRC=$GITHUB_WORKSPACE/linux/
           
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
