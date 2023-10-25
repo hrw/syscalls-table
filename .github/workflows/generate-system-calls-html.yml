@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  update-tables:
+  generate-and-deploy:
     permissions:
       contents: read
       id-token: write
@@ -31,7 +31,8 @@ jobs:
       - name: Generate system calls HTML
         working-directory: syscalls-table/
         run: |
-          python3 examples/generate-html-table.py > syscalls.html
+          mkdir -p out
+          python3 examples/generate-html-table.py > out/syscalls.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v3
@@ -39,7 +40,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: syscalls-table/syscalls.html
+          path: syscalls-table/out/
 
       - name: Deploy to GitHub Pages
         id: deployment
