@@ -106,8 +106,11 @@ fsync	5072
 ftruncate	5075
 ftruncate64
 futex	5194
+futex_requeue	5456
 futex_time64
+futex_wait	5455
 futex_waitv	5449
+futex_wake	5454
 futimesat	5251
 get_kernel_syms	5170
 get_mempolicy	5228
