@@ -106,8 +106,11 @@ fsync	4118
 ftruncate	4093
 ftruncate64	4212
 futex	4238
+futex_requeue	4456
 futex_time64	4422
+futex_wait	4455
 futex_waitv	4449
+futex_wake	4454
 futimesat	4292
 get_kernel_syms	4130
 get_mempolicy	4269
@@ -202,7 +205,7 @@ lsetxattr	4225
 lstat	4107
 lstat64	4214
 madvise	4218
-map_shadow_stack
+map_shadow_stack	4453
 mbind	4268
 membarrier	4358
 memfd_create	4354

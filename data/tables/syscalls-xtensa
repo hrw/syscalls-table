@@ -106,8 +106,11 @@ fsync	26
 ftruncate	23
 ftruncate64	29
 futex	191
+futex_requeue	456
 futex_time64	422
+futex_wait	455
 futex_waitv	449
+futex_wake	454
 futimesat	298
 get_kernel_syms
 get_mempolicy	264
@@ -202,7 +205,7 @@ lsetxattr	72
 lstat	49
 lstat64	50
 madvise	91
-map_shadow_stack
+map_shadow_stack	453
 mbind	263
 membarrier	343
 memfd_create	339
