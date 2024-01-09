@@ -188,6 +188,7 @@ lgetxattr	73
 link	32
 linkat	293
 listen	102
+listmount	458
 listxattr	70
 llistxattr	74
 lookup_dcookie	254
@@ -449,6 +450,7 @@ stat	46
 stat64	47
 statfs	184
 statfs64	186
+statmount	457
 statx	351
 stime
 subpage_prot

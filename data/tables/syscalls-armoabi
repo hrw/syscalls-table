@@ -188,6 +188,7 @@ lgetxattr	9437414
 link	9437193
 linkat	9437514
 listen	9437468
+listmount	9437642
 listxattr	9437416
 llistxattr	9437417
 lookup_dcookie	9437433
@@ -449,6 +450,7 @@ stat	9437290
 stat64	9437379
 statfs	9437283
 statfs64	9437450
+statmount	9437641
 statx	9437581
 stime	9437209
 subpage_prot
