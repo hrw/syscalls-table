@@ -195,6 +195,9 @@ lookup_dcookie	1073742036
 lremovexattr	1073742022
 lseek	1073741832
 lsetxattr	1073742013
+lsm_get_self_attr	1073742283
+lsm_list_modules	1073742285
+lsm_set_self_attr	1073742284
 lstat	1073741830
 lstat64
 madvise	1073741852

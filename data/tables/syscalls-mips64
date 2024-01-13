@@ -195,6 +195,9 @@ lookup_dcookie	5206
 lremovexattr	5190
 lseek	5008
 lsetxattr	5181
+lsm_get_self_attr	5459
+lsm_list_modules	5461
+lsm_set_self_attr	5460
 lstat	5006
 lstat64
 madvise	5027

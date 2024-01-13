@@ -1,1 +1,1 @@
-linux_version = "6.8-merge-window"
+linux_version = "6.7.0"
