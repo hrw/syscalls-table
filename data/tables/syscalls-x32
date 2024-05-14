@@ -201,7 +201,7 @@ lsm_set_self_attr	1073742284
 lstat	1073741830
 lstat64
 madvise	1073741852
-map_shadow_stack
+map_shadow_stack	1073742277
 mbind	1073742061
 membarrier	1073742148
 memfd_create	1073742143
