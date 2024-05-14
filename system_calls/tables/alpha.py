@@ -23,6 +23,7 @@ syscalls_alpha = {
     "clock_nanosleep": 422,
     "clock_settime": 419,
     "clone": 312,
+    "clone3": 545,
     "close": 6,
     "close_range": 546,
     "connect": 98,
