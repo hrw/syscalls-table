@@ -208,6 +208,7 @@ syscalls_sparc = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 274,
     "mremap": 250,
+    "mseal": 462,
     "msgctl": 402,
     "msgget": 399,
     "msgrcv": 401,

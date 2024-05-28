@@ -154,6 +154,7 @@ syscalls_riscv32 = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 181,
     "mremap": 216,
+    "mseal": 462,
     "msgctl": 187,
     "msgget": 186,
     "msgrcv": 188,

@@ -190,6 +190,7 @@ syscalls_xtensa = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 233,
     "mremap": 88,
+    "mseal": 462,
     "msgctl": 169,
     "msgget": 166,
     "msgrcv": 168,

@@ -186,6 +186,7 @@ syscalls_x86_64 = {
     "mq_timedsend": 242,
     "mq_unlink": 241,
     "mremap": 25,
+    "mseal": 462,
     "msgctl": 71,
     "msgget": 68,
     "msgrcv": 70,

@@ -207,6 +207,7 @@ syscalls_armoabi = {
     "mq_timedsend_time64": 9437602,
     "mq_unlink": 9437459,
     "mremap": 9437347,
+    "mseal": 9437646,
     "msgctl": 9437488,
     "msgget": 9437487,
     "msgrcv": 9437486,

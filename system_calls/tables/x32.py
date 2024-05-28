@@ -183,6 +183,7 @@ syscalls_x32 = {
     "mq_timedsend": 1073742066,
     "mq_unlink": 1073742065,
     "mremap": 1073741849,
+    "mseal": 1073742286,
     "msgctl": 1073741895,
     "msgget": 1073741892,
     "msgrcv": 1073741894,

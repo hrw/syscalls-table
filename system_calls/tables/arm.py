@@ -203,6 +203,7 @@ syscalls_arm = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 275,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 304,
     "msgget": 303,
     "msgrcv": 302,
