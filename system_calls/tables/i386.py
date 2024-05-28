@@ -212,6 +212,7 @@ syscalls_i386 = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 278,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 402,
     "msgget": 399,
     "msgrcv": 401,

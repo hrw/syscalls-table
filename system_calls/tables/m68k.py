@@ -210,6 +210,7 @@ syscalls_m68k = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 272,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 402,
     "msgget": 399,
     "msgrcv": 401,

@@ -197,6 +197,7 @@ syscalls_parisc = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 230,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 191,
     "msgget": 190,
     "msgrcv": 189,

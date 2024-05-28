@@ -187,6 +187,7 @@ syscalls_alpha = {
     "mq_timedsend": 434,
     "mq_unlink": 433,
     "mremap": 341,
+    "mseal": 572,
     "msgctl": 200,
     "msgget": 201,
     "msgrcv": 202,

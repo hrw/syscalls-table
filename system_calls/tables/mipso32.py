@@ -201,6 +201,7 @@ syscalls_mipso32 = {
     "mq_timedsend_time64": 4418,
     "mq_unlink": 4272,
     "mremap": 4167,
+    "mseal": 4462,
     "msgctl": 4402,
     "msgget": 4399,
     "msgrcv": 4401,

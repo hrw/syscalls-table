@@ -235,6 +235,7 @@ syscalls_names = [
     "mq_timedsend_time64",
     "mq_unlink",
     "mremap",
+    "mseal",
     "msgctl",
     "msgget",
     "msgrcv",

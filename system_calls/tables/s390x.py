@@ -180,6 +180,7 @@ syscalls_s390x = {
     "mq_timedsend": 273,
     "mq_unlink": 272,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 402,
     "msgget": 399,
     "msgrcv": 401,

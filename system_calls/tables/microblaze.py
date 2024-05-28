@@ -211,6 +211,7 @@ syscalls_microblaze = {
     "mq_timedsend_time64": 418,
     "mq_unlink": 278,
     "mremap": 163,
+    "mseal": 462,
     "msgctl": 331,
     "msgget": 332,
     "msgrcv": 333,

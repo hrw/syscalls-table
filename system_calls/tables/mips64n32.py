@@ -191,6 +191,7 @@ syscalls_mips64n32 = {
     "mq_timedsend_time64": 6418,
     "mq_unlink": 6235,
     "mremap": 6024,
+    "mseal": 6462,
     "msgctl": 6069,
     "msgget": 6066,
     "msgrcv": 6068,
