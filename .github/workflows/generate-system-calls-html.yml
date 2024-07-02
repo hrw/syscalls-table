@@ -1,8 +1,5 @@
 name: Generate system calls HTML table
 
-#
-# for now it will be manual
-#
 on:
   workflow_dispatch:
   push:
@@ -29,7 +26,7 @@ jobs:
         with:
           path: syscalls-table/
           ref: master
-      
+
       - name: Install Python package
         working-directory: syscalls-table/
         run: |

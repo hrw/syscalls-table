@@ -30,18 +30,18 @@ jobs:
         with:
           path: syscalls-table/
           ref: master
-      
+
       - name: Checkout Linux
         uses: actions/checkout@v4
         with:
           path: linux
           repository: torvalds/linux
-          
+
       - name: Update system calls data
         working-directory: syscalls-table/
         run: |
           bash scripts/update-tables.sh $GITHUB_WORKSPACE/linux/
-          
+
       - name: Check linux version
         working-directory: linux/
         run: |
