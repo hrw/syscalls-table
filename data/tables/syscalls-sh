@@ -466,7 +466,7 @@ symlink	83
 symlinkat	304
 sync	36
 sync_file_range	314
-sync_file_range2
+sync_file_range2	388
 syncfs	362
 sys_debug_setcontext
 syscall

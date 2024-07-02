@@ -465,8 +465,8 @@ switch_endian
 symlink
 symlinkat	36
 sync	81
-sync_file_range	84
-sync_file_range2
+sync_file_range
+sync_file_range2	84
 syncfs	267
 sys_debug_setcontext
 syscall
