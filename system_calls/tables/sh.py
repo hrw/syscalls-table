@@ -378,6 +378,7 @@ syscalls_sh = {
     "symlinkat": 304,
     "sync": 36,
     "sync_file_range": 314,
+    "sync_file_range2": 388,
     "syncfs": 362,
     "sysfs": 135,
     "sysinfo": 116,

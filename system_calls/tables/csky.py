@@ -302,7 +302,7 @@ syscalls_csky = {
     "swapon": 224,
     "symlinkat": 36,
     "sync": 81,
-    "sync_file_range": 84,
+    "sync_file_range2": 84,
     "syncfs": 267,
     "sysinfo": 179,
     "syslog": 116,
