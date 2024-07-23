@@ -347,6 +347,7 @@ syscalls_x32 = {
     "unlink": 1073741911,
     "unlinkat": 1073742087,
     "unshare": 1073742096,
+    "uretprobe": 1073742291,
     "userfaultfd": 1073742147,
     "ustat": 1073741960,
     "utime": 1073741956,
