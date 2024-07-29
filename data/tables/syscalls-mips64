@@ -95,6 +95,7 @@ fsopen	5430
 fspick	5433
 fstat	5005
 fstat64
+fstatat
 fstatat64
 fstatfs	5135
 fstatfs64
@@ -191,6 +192,7 @@ listen	5049
 listmount	5458
 listxattr	5186
 llistxattr	5187
+llseek
 lookup_dcookie	5206
 lremovexattr	5190
 lseek	5008
@@ -502,6 +504,7 @@ uname	5061
 unlink	5085
 unlinkat	5253
 unshare	5262
+uretprobe
 userfaultfd	5317
 ustat	5133
 utime	5130

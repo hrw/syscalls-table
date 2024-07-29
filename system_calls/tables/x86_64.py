@@ -351,6 +351,7 @@ syscalls_x86_64 = {
     "unlink": 87,
     "unlinkat": 263,
     "unshare": 272,
+    "uretprobe": 467,
     "userfaultfd": 323,
     "ustat": 136,
     "utime": 132,
