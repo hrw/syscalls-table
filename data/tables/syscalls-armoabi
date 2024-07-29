@@ -95,6 +95,7 @@ fsopen	9437614
 fspick	9437617
 fstat	9437292
 fstat64	9437381
+fstatat
 fstatat64	9437511
 fstatfs	9437284
 fstatfs64	9437451
@@ -191,6 +192,7 @@ listen	9437468
 listmount	9437642
 listxattr	9437416
 llistxattr	9437417
+llseek
 lookup_dcookie	9437433
 lremovexattr	9437420
 lseek	9437203
@@ -502,6 +504,7 @@ uname	9437306
 unlink	9437194
 unlinkat	9437512
 unshare	9437521
+uretprobe
 userfaultfd	9437572
 ustat	9437246
 utime	9437214
