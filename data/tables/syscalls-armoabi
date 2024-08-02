@@ -247,6 +247,7 @@ munlockall	9437337
 munmap	9437275
 name_to_handle_at	9437554
 nanosleep	9437346
+newfstat
 newfstatat
 nice	9437218
 old_adjtimex
