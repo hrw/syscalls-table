@@ -333,7 +333,6 @@ syscalls_arc = {
     "uname": 160,
     "unlinkat": 35,
     "unshare": 97,
-    "uretprobe": 467,
     "userfaultfd": 282,
     "utimensat": 88,
     "utimensat_time64": 412,

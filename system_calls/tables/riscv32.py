@@ -302,7 +302,6 @@ syscalls_riscv32 = {
     "uname": 160,
     "unlinkat": 35,
     "unshare": 97,
-    "uretprobe": 467,
     "userfaultfd": 282,
     "utimensat_time64": 412,
     "vhangup": 58,

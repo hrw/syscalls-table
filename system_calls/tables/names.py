@@ -249,6 +249,7 @@ syscalls_names = [
     "munmap",
     "name_to_handle_at",
     "nanosleep",
+    "newfstat",
     "newfstatat",
     "nice",
     "old_adjtimex",

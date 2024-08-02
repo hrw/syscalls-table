@@ -247,6 +247,7 @@ munlockall	6149
 munmap	6011
 name_to_handle_at	6303
 nanosleep	6034
+newfstat
 newfstatat	6256
 nice
 old_adjtimex

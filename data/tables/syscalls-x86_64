@@ -247,6 +247,7 @@ munlockall	152
 munmap	11
 name_to_handle_at	303
 nanosleep	35
+newfstat
 newfstatat	262
 nice
 old_adjtimex
@@ -504,7 +505,7 @@ uname	63
 unlink	87
 unlinkat	263
 unshare	272
-uretprobe	467
+uretprobe	335
 userfaultfd	323
 ustat	136
 utime	132
