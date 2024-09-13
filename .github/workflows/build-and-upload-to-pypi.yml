@@ -22,11 +22,14 @@ jobs:
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
 
+    - name: Install system_calls
+      run: python3 -m pip install dist/system_calls-*.whl --user
+
     - name: Install pytest
       run: python3 -m pip install pytest --user
 
     - name: Run pytest
-      run: pytest -v
+      run: pytest -v system_calls/tests/test*.py
 
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
