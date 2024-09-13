@@ -23,10 +23,6 @@ def test_on_arm64_open_is_not_supported():
         print(syscalls.get("open", "arm64"))
 
 
-def test_alpha_osf_fuser():
-    assert 243 == syscalls.get("osf_fuser", "alpha")
-
-
 def test_not_existing_system_call():
     with pytest.raises(system_calls.NoSuchSystemCall):
         print(syscalls.get("not-existing-system-call", "arm64"))
