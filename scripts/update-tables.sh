@@ -159,10 +159,6 @@ do_all_tables()
 			bits=64
 			arch=sparc64		extraflags=-D__arch64__			generate_table
 			;;
-		tile)
-											generate_table
-			arch=tile64		extraflags="-D__LP64__ -D__tilegx__"	generate_table
-			;;
 		x86)
 			arch=x86_64		extraflags=-D__LP64__			generate_table
 			bits=32
