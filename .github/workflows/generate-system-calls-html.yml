@@ -30,7 +30,9 @@ jobs:
       - name: Install Python package
         working-directory: syscalls-table/
         run: |
-          pip install --user .
+          python3 -m venv /tmp/venv
+          . /tmp/venv/bin/activate
+          pip install .
 
       - name: Generate system calls HTML
         working-directory: syscalls-table/
