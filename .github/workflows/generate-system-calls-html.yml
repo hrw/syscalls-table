@@ -27,10 +27,14 @@ jobs:
           path: syscalls-table/
           ref: master
 
-      - name: Install Python package
+      - name: Create Python virtualenv
         working-directory: syscalls-table/
         run: |
           python3 -m venv /tmp/venv
+
+      - name: Install Python package
+        working-directory: syscalls-table/
+        run: |
           . /tmp/venv/bin/activate
           pip install .
 
@@ -38,6 +42,7 @@ jobs:
         working-directory: syscalls-table/
         run: |
           mkdir -p out
+          . /tmp/venv/bin/activate
           python3 examples/generate-html-table.py > out/syscalls.html
 
       - name: Configure GitHub Pages
