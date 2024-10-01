@@ -30,7 +30,7 @@ jobs:
       - name: Install Python package
         working-directory: syscalls-table/
         run: |
-          pip install .
+          pip install --user .
 
       - name: Generate system calls HTML
         working-directory: syscalls-table/
