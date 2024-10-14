@@ -26,6 +26,7 @@ jobs:
         with:
           path: syscalls-table/
           ref: master
+          submodules: true
 
       - name: Create Python virtualenv
         working-directory: syscalls-table/

@@ -22,78 +22,8 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="Marcin Juszkiewicz" />
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/colreorder/1.5.6/css/colReorder.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.1/css/fixedHeader.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/4.2.1/css/fixedColumns.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/datatables.mark.js/2.0.0/datatables.mark.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.min.css"/>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.colVis.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/colreorder/1.5.6/js/dataTables.colReorder.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/4.2.1/js/dataTables.fixedColumns.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.12.1/features/mark.js/datatables.mark.js"></script>
-    <script type="text/javascript" id="js">
-            $(document).ready(function() {
-                    $("table").DataTable( {
-                            pageLength     : -1,
-			    paging         : false,
-                            scrollX        : true,
-                            scrollCollapse : true,
-                            fixedHeader    : true,
-                            fixedColumns   : {
-                                left: 1
-                            },
-                            colReorder     : true,
-                            mark           : true,
-                            dom            : 'Bft',
-                            buttons        : [
-				{
-                                    extend : 'colvis',
-                                    text: 'disable architectures',
-                                    columns: ':gt(0)'
-				}
-                            ]
-                    });
-    });
-    </script>
-    <style type="text/css">
-
-table.syscalls {
-        border: 1px solid #000;
-}
-
-table.syscalls th {
-        text-align: center;
-        padding: 0.5em;
-        line-height: 2em;
-        color: black;
-}
-
-table.syscalls thead {
-        border: 1px solid black;
-}
-
-table.syscalls td {
-        padding: 0.5em;
-}
-
-table.syscalls tbody tr.odd td {
-        background-color: lightgrey;
-}
-
-.legacy, table.syscalls tbody tr.odd td.legacy {
-        background-color: lightpink;
-}
-    </style>
+{% include "common/datatables-js-css.inc.j2" %}
+{% include "common/css.inc.j2" %}
 </head>
 <body>
 
@@ -132,33 +62,9 @@ table.syscalls tbody tr.odd td {
         <li>there is now Python module for querying this data: "system_calls"</li>
     </ul>
 
-<h2>Author info</h2>
-    <p>
-    System calls table is maintained by <a href="https://marcin.juszkiewicz.com.pl/">Marcin Juszkiewicz</a> &mdash; AArch64/Arm developer working at Red Hat as Linaro assignee.
-    </p>
+{% include "common/author-tables-help.inc.j2" %}
 
-<h2>My table pages</h2>
-<ul>
-	<li><a href="https://gpages.juszkiewicz.com.pl/arm-socs-table/arm-socs.html">AArch64 SoC features table</a></li>
-	<li><a href="https://gpages.juszkiewicz.com.pl/arm-socs-table/arm-cpu-cores.html">AArch64 cpu cores information</a></li>
-	<li><a href="https://gpages.juszkiewicz.com.pl/syscalls-table/syscalls.html">Linux kernel system calls for all architectures</a></li>
-	<li><a href="https://marcin.juszkiewicz.com.pl/download/tables/bsa-sbsa.html">Arm BSA/SBSA checklist</a></li>
-</ul>
-<h2>How to help</h2>
-    <p>
-    Sources used to generate table are available in <a
-    href="https://github.com/hrw/syscalls-table">git repository at github</a>.
-    Patches are always welcomed.
-    </p>
-    <p>
-    If this table helped you in some project then please leave a comment in
-    <a href="https://github.com/hrw/syscalls-table/issues/12">issue on GitHub</a>.
-    </p>
-
-<h2>Build info</h2>
-    <p>Table generated on <strong>{{ generate_time }} UTC</strong> using data from <strong>{{ syscalls.linux_version }}</strong> kernel source.</p>
-
-<table class="syscalls">
+<table id="infotable" class="display" style="width:100%">
     <thead>
         <tr>
             <th>system call</th>
@@ -183,4 +89,21 @@ table.syscalls tbody tr.odd td {
     </tbody>
 </table>
 </body>
+<script>
+    new DataTable('#infotable', {
+            pageLength:         -1,
+            paging:             false,
+            scrollX:            true,
+            scrollCollapse:     true,
+            fixedColumns:       { start: 1 },
+            colReorder:         true,
+            mark:               true,
+            dom:                'Bft',
+            buttons:            [ {
+                                    extend : 'colvis',
+                                    text: 'disable architectures',
+                                    columns: ':gt(0)'
+                                } ]
+    });
+</script>
 </html>

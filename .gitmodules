@@ -1,0 +1,4 @@
+[submodule "templates/common"]
+	path = templates/common
+	url = https://github.com/hrw/tables-common.git
+	branch = main
