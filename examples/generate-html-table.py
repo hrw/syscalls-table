@@ -70,6 +70,7 @@ def generate_html_file():
                              archs=create_arch_list(syscalls.archs()),
                              syscalls=generate_system_calls_tree(),
                              syscall_names=syscalls.names(),
+                             git_repo="syscalls-table",
                              minify=True)
     print(output)
 
