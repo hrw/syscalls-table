@@ -71,6 +71,9 @@ def generate_html_file():
                              syscalls=generate_system_calls_tree(),
                              syscall_names=syscalls.names(),
                              git_repo="syscalls-table",
+                             extra_build_info=" using data from "
+                             f"{ system_calls.linux_version } "
+                             "kernel source",
                              minify=True)
     print(output)
 
