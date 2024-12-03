@@ -149,6 +149,7 @@ gettimeofday	1073741920
 getuid	1073741926
 getuid32
 getxattr	1073742015
+getxattrat	1073742288
 getxgid
 getxpid
 getxuid
@@ -190,6 +191,7 @@ linkat	1073742089
 listen	1073741874
 listmount	1073742282
 listxattr	1073742018
+listxattrat	1073742289
 llistxattr	1073742019
 llseek
 lookup_dcookie	1073742036
@@ -341,6 +343,7 @@ recvmmsg_time64
 recvmsg	1073742343
 remap_file_pages	1073742040
 removexattr	1073742021
+removexattrat	1073742290
 rename	1073741906
 renameat	1073742088
 renameat2	1073742140
@@ -429,6 +432,7 @@ settimeofday	1073741988
 setuid	1073741929
 setuid32
 setxattr	1073742012
+setxattrat	1073742287
 sgetmask
 shmat	1073741854
 shmctl	1073741855
