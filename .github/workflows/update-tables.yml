@@ -17,6 +17,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
     steps:
       - name: install packages data
         run: sudo apt-get update
@@ -47,6 +48,15 @@ jobs:
         run: |
           LINUX_VER=$(make kernelversion)
           echo "VERSION=$LINUX_VER" >> $GITHUB_ENV
+
+      # taken from https://stackoverflow.com/a/75809743
+      - name: Exit if only kernel version change
+        working-directory: syscalls-table/
+        run: |
+          if [ `git diff system_calls | wc -l` == 7 ]; then
+            gh run cancel ${{ github.run_id }}
+            gh run watch  ${{ github.run_id }}
+          fi
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
