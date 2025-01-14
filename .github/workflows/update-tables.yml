@@ -1,5 +1,8 @@
 name: Update system calls data
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 on:
   workflow_dispatch:
   schedule:
