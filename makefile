@@ -1,7 +1,7 @@
 #!/usr/bin/make
 
-update:
-	./tables2python.sh
+builddeps:
+	pip install -U wheel build twine
 
 wheel:
 	python3 -m build
