@@ -16,6 +16,7 @@ architectures = [
     "nios2",
     "openrisc",
     "parisc",
+    "parisc64",
     "powerpc",
     "powerpc64",
     "riscv64",
