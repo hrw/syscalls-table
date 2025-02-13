@@ -1,1 +1,1 @@
-linux_version = "6.13.0"
+linux_version = "6.14.0-rc2"
