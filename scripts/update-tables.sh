@@ -138,6 +138,11 @@ do_all_tables()
 			arch=mipso32		extraflags=-D_MIPS_SIM=_MIPS_SIM_ABI32	generate_table
 			arch=mips64n32		extraflags=-D_MIPS_SIM=_MIPS_SIM_NABI32	generate_table
 			;;
+		parisc)
+											generate_table
+			bits=64
+			arch=parisc64		extraflags=-D__LP64__			generate_table
+			;;
 		powerpc)
 											generate_table
 			arch=powerpc64							generate_table
