@@ -203,6 +203,7 @@ syscalls_x86_64 = {
     "open": 2,
     "open_by_handle_at": 304,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 257,
     "openat2": 437,
     "pause": 34,

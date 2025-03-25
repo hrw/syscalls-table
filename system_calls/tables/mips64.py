@@ -197,6 +197,7 @@ syscalls_mips64 = {
     "open": 5002,
     "open_by_handle_at": 5299,
     "open_tree": 5428,
+    "open_tree_attr": 5467,
     "openat": 5247,
     "openat2": 5437,
     "pause": 5033,

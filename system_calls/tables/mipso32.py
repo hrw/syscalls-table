@@ -218,6 +218,7 @@ syscalls_mipso32 = {
     "open": 4005,
     "open_by_handle_at": 4340,
     "open_tree": 4428,
+    "open_tree_attr": 4467,
     "openat": 4288,
     "openat2": 4437,
     "pause": 4029,

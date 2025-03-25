@@ -169,6 +169,7 @@ syscalls_riscv32 = {
     "name_to_handle_at": 264,
     "open_by_handle_at": 265,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 56,
     "openat2": 437,
     "perf_event_open": 241,
