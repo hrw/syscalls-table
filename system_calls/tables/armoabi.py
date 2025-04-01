@@ -224,6 +224,7 @@ syscalls_armoabi = {
     "open": 9437189,
     "open_by_handle_at": 9437555,
     "open_tree": 9437612,
+    "open_tree_attr": 9437651,
     "openat": 9437506,
     "openat2": 9437621,
     "pause": 9437213,

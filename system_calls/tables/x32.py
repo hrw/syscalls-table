@@ -200,6 +200,7 @@ syscalls_x32 = {
     "open": 1073741826,
     "open_by_handle_at": 1073742128,
     "open_tree": 1073742252,
+    "open_tree_attr": 1073742291,
     "openat": 1073742081,
     "openat2": 1073742261,
     "pause": 1073741858,

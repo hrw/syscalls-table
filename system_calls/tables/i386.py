@@ -234,6 +234,7 @@ syscalls_i386 = {
     "open": 5,
     "open_by_handle_at": 342,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 295,
     "openat2": 437,
     "pause": 29,

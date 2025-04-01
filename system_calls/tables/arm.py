@@ -220,6 +220,7 @@ syscalls_arm = {
     "open": 5,
     "open_by_handle_at": 371,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 322,
     "openat2": 437,
     "pause": 29,
