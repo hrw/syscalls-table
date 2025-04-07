@@ -206,6 +206,7 @@ syscalls_xtensa = {
     "open": 8,
     "open_by_handle_at": 325,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 288,
     "openat2": 437,
     "perf_event_open": 327,

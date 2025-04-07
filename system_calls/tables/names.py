@@ -262,6 +262,7 @@ syscalls_names = [
     "open",
     "open_by_handle_at",
     "open_tree",
+    "open_tree_attr",
     "openat",
     "openat2",
     "or1k_atomic",
