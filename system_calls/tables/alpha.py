@@ -205,6 +205,7 @@ syscalls_alpha = {
     "open": 45,
     "open_by_handle_at": 498,
     "open_tree": 538,
+    "open_tree_attr": 577,
     "openat": 450,
     "openat2": 547,
     "osf_fstat": 226,

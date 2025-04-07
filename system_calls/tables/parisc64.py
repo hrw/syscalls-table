@@ -205,6 +205,7 @@ syscalls_parisc64 = {
     "open": 5,
     "open_by_handle_at": 326,
     "open_tree": 428,
+    "open_tree_attr": 467,
     "openat": 275,
     "openat2": 437,
     "pause": 29,
