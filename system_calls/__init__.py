@@ -29,28 +29,26 @@ class NoSuchArchitecture(Exception):
 
 class syscalls:
     def __init__(self):
-        self.syscalls = {
-            "archs": {
-                "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
-                "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386",
-                "ia64", "loongarch64", "m32r", "m68k", "metag", "microblaze",
-                "mips64n32", "mips64", "mipso32", "mn10300", "nds32", "nios2",
-                "openrisc", "parisc", "powerpc64", "powerpc", "riscv32",
-                "riscv64", "s390", "s390x", "score", "sh64", "sh", "sparc64",
-                "sparc", "tile64", "tile", "unicore32", "x32", "x86_64",
-                "xtensa"
-            },
-        }
+        self._archs = [
+            "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
+            "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386", "ia64",
+            "loongarch64", "m32r", "m68k", "metag", "microblaze", "mips64n32",
+            "mips64", "mipso32", "mn10300", "nds32", "nios2", "openrisc",
+            "parisc", "powerpc64", "powerpc", "riscv32", "riscv64", "s390",
+            "s390x", "score", "sh64", "sh", "sparc64", "sparc", "tile64",
+            "tile", "unicore32", "x32", "x86_64", "xtensa"
+        ]
 
-        self.default_arch = os.uname().machine
+        self._names = syscalls_names
+        self._default_arch = os.uname().machine
         self._loaded_arch_tables = {}
         self._names = syscalls_names
         self.linux_version = linux_version
 
     def load_arch_table(self, arch: str):
         """Loads an architecture table dynamically."""
-            if arch not in self.archs():
         if arch not in self._loaded_arch_tables:
+            if arch not in self._archs:
                 raise NoSuchArchitecture
             try:
                 module_name = f"system_calls.tables.{arch}"
@@ -75,7 +73,7 @@ class syscalls:
         architecture would be used by default).
         """
         if arch == "" or arch is None:
-            arch = self.default_arch
+            arch = self._default_arch
 
         # First, try to load/get the architecture's table
         try:
@@ -95,7 +93,7 @@ class syscalls:
         """Returns list of architectures supported by class.
         Some entries are no longer supported by mainline Linux kernel.
         """
-        return list(self.syscalls["archs"])
+        return self._archs
 
     def names(self) -> list:
         """Returns list of system calls known by class."""
