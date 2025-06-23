@@ -72,7 +72,7 @@ class NoSuchArchitecture(Exception):
     pass
 
 
-class syscalls(dict):
+class syscalls:
     def __init__(self):
         self.syscalls = {
             "names": syscalls_names,
