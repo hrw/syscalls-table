@@ -8,9 +8,10 @@ popular_syscalls = {}
 
 syscalls = system_calls.syscalls()
 
-for arch in syscalls.archs():
+archs = syscalls.archs()
+for arch in archs:
     if arch not in architectures:
-        del syscalls.syscalls["archs"][arch]
+        archs.remove(arch)
 
 
 for syscall_name in syscalls.names():
