@@ -19,6 +19,8 @@ syscalls = system_calls.syscalls()
     ]
 )
 def test_get_valid_syscalls(syscall_name, arch, expected_number):
+    """Tests for system calls which exist on tested architecture.
+    """
     assert syscalls.get(syscall_name, arch) == expected_number
 
 
@@ -30,6 +32,8 @@ def test_get_valid_syscalls(syscall_name, arch, expected_number):
     ]
 )
 def test_unsupported_system_call(syscall_name, arch):
+    """Tests for system calls which do not exist on tested architecture.
+    """
     with pytest.raises(system_calls.NotSupportedSystemCall):
         syscalls.get(syscall_name, arch)
 
@@ -47,6 +51,10 @@ def test_unsupported_system_call(syscall_name, arch):
     ]
 )
 def test_not_existing_system_call(syscall_name, arch):
+    """Tests for system calls which do not exist at all. Including wrong names,
+    typos, None, empty string.
+    None/empty architecture name is changed in code to host architecture.
+    """
     with pytest.raises(system_calls.NoSuchSystemCall):
         syscalls.get(syscall_name, arch)
 
@@ -60,5 +68,8 @@ def test_not_existing_system_call(syscall_name, arch):
     ]
 )
 def test_no_such_architecture(syscall_name, arch):
+    """Tests for wrong architecture names. x86_64 written as x86-64 is an
+    error. Spaces are not stripped etc.
+    """
     with pytest.raises(system_calls.NoSuchArchitecture):
         syscalls.get(syscall_name, arch)
