@@ -30,7 +30,6 @@ class NoSuchArchitecture(Exception):
 class syscalls:
     def __init__(self):
         self.syscalls = {
-            "names": syscalls_names,
             "archs": {
                 "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
                 "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386",
@@ -45,6 +44,7 @@ class syscalls:
 
         self.default_arch = os.uname().machine
         self._loaded_arch_tables = {}
+        self._names = syscalls_names
         self.linux_version = linux_version
 
     def load_arch_table(self, arch: str):
@@ -86,7 +86,7 @@ class syscalls:
         try:
             return arch_table[syscall_name]
         except KeyError:
-            if syscall_name not in self.syscalls["names"]:
+            if syscall_name not in self._names:
                 raise NoSuchSystemCall
             else:
                 raise NotSupportedSystemCall
@@ -99,4 +99,4 @@ class syscalls:
 
     def names(self) -> list:
         """Returns list of system calls known by class."""
-        return self.syscalls["names"]
+        return self._names
