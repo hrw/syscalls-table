@@ -56,6 +56,7 @@ def test_not_existing_system_call(syscall_name, arch):
     [
         ("not-existing-system-call", "arm65"),
         ("another-fake-syscall", "x86-64"),
+        ("another-fake-syscall", "arm64 "),
     ]
 )
 def test_no_such_architecture(syscall_name, arch):
