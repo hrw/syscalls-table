@@ -40,6 +40,10 @@ def test_unsupported_system_call(syscall_name, arch):
         ("not-existing-system-call", "arm64"),
         ("another-fake-syscall", "x86_64"),
         ("openAT", "arm64"),
+        ("openAT", None),
+        ("", "arm64"),
+        (None, "riscv64"),
+        (None, ""),
     ]
 )
 def test_not_existing_system_call(syscall_name, arch):
