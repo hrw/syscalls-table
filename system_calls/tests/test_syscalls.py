@@ -6,23 +6,41 @@ import system_calls
 syscalls = system_calls.syscalls()
 
 
-def test_x86_64_open():
-    assert 2 == syscalls.get("open", "x86_64")
+@pytest.mark.parametrize(
+    "syscall_name, arch, expected_number",
+    [
+        ("open", "x86_64", 2),
+        ("openat", "x86_64", 257),
+        ("openat", "arm64", 56),
+        ("read", "x86_64", 0),
+        ("write", "x86_64", 1),
+        ("exit", "x86_64", 60),
+        ("listmount", "riscv64", 458),
+    ]
+)
+def test_get_valid_syscalls(syscall_name, arch, expected_number):
+    assert syscalls.get(syscall_name, arch) == expected_number
 
 
-def test_x86_64_openat():
-    assert 257 == syscalls.get("openat", "x86_64")
-
-
-def test_arm64_openat():
-    assert 56 == syscalls.get("openat", "arm64")
-
-
-def test_on_arm64_open_is_not_supported():
+@pytest.mark.parametrize(
+    "syscall_name, arch",
+    [
+        ("open", "arm64"),
+        ("creat", "riscv64"),
+    ]
+)
+def test_unsupported_system_call(syscall_name, arch):
     with pytest.raises(system_calls.NotSupportedSystemCall):
-        print(syscalls.get("open", "arm64"))
+        syscalls.get(syscall_name, arch)
 
 
-def test_not_existing_system_call():
+@pytest.mark.parametrize(
+    "syscall_name, arch",
+    [
+        ("not-existing-system-call", "arm64"),
+        ("another-fake-syscall", "x86_64"),
+    ]
+)
+def test_not_existing_system_call(syscall_name, arch):
     with pytest.raises(system_calls.NoSuchSystemCall):
-        print(syscalls.get("not-existing-system-call", "arm64"))
+        syscalls.get(syscall_name, arch)
