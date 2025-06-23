@@ -1,52 +1,7 @@
+import importlib
 import os
 
 from system_calls.tables.names import syscalls_names
-from system_calls.tables.alpha import syscalls_alpha
-from system_calls.tables.arc import syscalls_arc
-from system_calls.tables.arm64 import syscalls_arm64
-from system_calls.tables.armoabi import syscalls_armoabi
-from system_calls.tables.arm import syscalls_arm
-from system_calls.tables.avr32 import syscalls_avr32
-from system_calls.tables.blackfin import syscalls_blackfin
-from system_calls.tables.c6x import syscalls_c6x
-from system_calls.tables.cris import syscalls_cris
-from system_calls.tables.csky import syscalls_csky
-from system_calls.tables.frv import syscalls_frv
-from system_calls.tables.h8300 import syscalls_h8300
-from system_calls.tables.hexagon import syscalls_hexagon
-from system_calls.tables.i386 import syscalls_i386
-from system_calls.tables.ia64 import syscalls_ia64
-from system_calls.tables.loongarch64 import syscalls_loongarch64
-from system_calls.tables.m32r import syscalls_m32r
-from system_calls.tables.m68k import syscalls_m68k
-from system_calls.tables.metag import syscalls_metag
-from system_calls.tables.microblaze import syscalls_microblaze
-from system_calls.tables.mips64n32 import syscalls_mips64n32
-from system_calls.tables.mips64 import syscalls_mips64
-from system_calls.tables.mipso32 import syscalls_mipso32
-from system_calls.tables.mn10300 import syscalls_mn10300
-from system_calls.tables.nds32 import syscalls_nds32
-from system_calls.tables.nios2 import syscalls_nios2
-from system_calls.tables.openrisc import syscalls_openrisc
-from system_calls.tables.parisc import syscalls_parisc
-from system_calls.tables.powerpc64 import syscalls_powerpc64
-from system_calls.tables.powerpc import syscalls_powerpc
-from system_calls.tables.riscv32 import syscalls_riscv32
-from system_calls.tables.riscv64 import syscalls_riscv64
-from system_calls.tables.s390 import syscalls_s390
-from system_calls.tables.s390x import syscalls_s390x
-from system_calls.tables.score import syscalls_score
-from system_calls.tables.sh64 import syscalls_sh64
-from system_calls.tables.sh import syscalls_sh
-from system_calls.tables.sparc64 import syscalls_sparc64
-from system_calls.tables.sparc import syscalls_sparc
-from system_calls.tables.tile64 import syscalls_tile64
-from system_calls.tables.tile import syscalls_tile
-from system_calls.tables.unicore32 import syscalls_unicore32
-from system_calls.tables.x32 import syscalls_x32
-from system_calls.tables.x86_64 import syscalls_x86_64
-from system_calls.tables.xtensa import syscalls_xtensa
-
 from system_calls.linux_version import linux_version
 
 
@@ -77,56 +32,36 @@ class syscalls:
         self.syscalls = {
             "names": syscalls_names,
             "archs": {
-                "alpha": syscalls_alpha,
-                "arc": syscalls_arc,
-                "arm64": syscalls_arm64,
-                "armoabi": syscalls_armoabi,
-                "arm": syscalls_arm,
-                "avr32": syscalls_avr32,
-                "blackfin": syscalls_blackfin,
-                "c6x": syscalls_c6x,
-                "cris": syscalls_cris,
-                "csky": syscalls_csky,
-                "frv": syscalls_frv,
-                "h8300": syscalls_h8300,
-                "hexagon": syscalls_hexagon,
-                "i386": syscalls_i386,
-                "ia64": syscalls_ia64,
-                "loongarch64": syscalls_loongarch64,
-                "m32r": syscalls_m32r,
-                "m68k": syscalls_m68k,
-                "metag": syscalls_metag,
-                "microblaze": syscalls_microblaze,
-                "mips64n32": syscalls_mips64n32,
-                "mips64": syscalls_mips64,
-                "mipso32": syscalls_mipso32,
-                "mn10300": syscalls_mn10300,
-                "nds32": syscalls_nds32,
-                "nios2": syscalls_nios2,
-                "openrisc": syscalls_openrisc,
-                "parisc": syscalls_parisc,
-                "powerpc64": syscalls_powerpc64,
-                "powerpc": syscalls_powerpc,
-                "riscv32": syscalls_riscv32,
-                "riscv64": syscalls_riscv64,
-                "s390": syscalls_s390,
-                "s390x": syscalls_s390x,
-                "score": syscalls_score,
-                "sh64": syscalls_sh64,
-                "sh": syscalls_sh,
-                "sparc64": syscalls_sparc64,
-                "sparc": syscalls_sparc,
-                "tile64": syscalls_tile64,
-                "tile": syscalls_tile,
-                "unicore32": syscalls_unicore32,
-                "x32": syscalls_x32,
-                "x86_64": syscalls_x86_64,
-                "xtensa": syscalls_xtensa,
+                "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
+                "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386",
+                "ia64", "loongarch64", "m32r", "m68k", "metag", "microblaze",
+                "mips64n32", "mips64", "mipso32", "mn10300", "nds32", "nios2",
+                "openrisc", "parisc", "powerpc64", "powerpc", "riscv32",
+                "riscv64", "s390", "s390x", "score", "sh64", "sh", "sparc64",
+                "sparc", "tile64", "tile", "unicore32", "x32", "x86_64",
+                "xtensa"
             },
         }
 
         self.default_arch = os.uname().machine
+        self._loaded_arch_tables = {}
         self.linux_version = linux_version
+
+    def load_arch_table(self, arch: str):
+        """Loads an architecture table dynamically."""
+            if arch not in self.archs():
+        if arch not in self._loaded_arch_tables:
+                raise NoSuchArchitecture
+            try:
+                module_name = f"system_calls.tables.{arch}"
+                module = importlib.import_module(module_name)
+                table = getattr(module, f"syscalls_{arch}")
+                self._loaded_arch_tables[arch] = table
+            except (ImportError, AttributeError) as e:
+                # Handle cases where module/table might be missing/malformed
+                raise RuntimeError("Failed to load table for architecture "
+                                   f"'{arch}': {e}") from e
+        return self._loaded_arch_tables[arch]
 
     def __getitem__(self, syscall_name: str) -> int:
         """Returns number for requested system call.
@@ -142,12 +77,16 @@ class syscalls:
         if arch == "" or arch is None:
             arch = self.default_arch
 
+        # First, try to load/get the architecture's table
         try:
-            return self.syscalls["archs"][arch][syscall_name]
+            arch_table = self.load_arch_table(arch)
+        except NoSuchArchitecture:
+            raise NoSuchArchitecture
+
+        try:
+            return arch_table[syscall_name]
         except KeyError:
-            if arch not in self.archs():
-                raise NoSuchArchitecture
-            elif syscall_name not in self.syscalls["names"]:
+            if syscall_name not in self.syscalls["names"]:
                 raise NoSuchSystemCall
             else:
                 raise NotSupportedSystemCall
@@ -156,7 +95,7 @@ class syscalls:
         """Returns list of architectures supported by class.
         Some entries are no longer supported by mainline Linux kernel.
         """
-        return list(self.syscalls["archs"].keys())
+        return list(self.syscalls["archs"])
 
     def names(self) -> list:
         """Returns list of system calls known by class."""
