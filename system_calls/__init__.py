@@ -64,6 +64,14 @@ class NotSupportedSystemCall(Exception):
     pass
 
 
+class NoSuchArchitecture(Exception):
+    """Exception will be called if asked for system call for not supported
+    architecture.
+    """
+
+    pass
+
+
 class syscalls(dict):
     def __init__(self):
         self.syscalls = {
@@ -137,7 +145,9 @@ class syscalls(dict):
         try:
             return self.syscalls["archs"][arch][syscall_name]
         except KeyError:
-            if syscall_name not in self.syscalls["names"]:
+            if arch not in self.archs():
+                raise NoSuchArchitecture
+            elif syscall_name not in self.syscalls["names"]:
                 raise NoSuchSystemCall
             else:
                 raise NotSupportedSystemCall

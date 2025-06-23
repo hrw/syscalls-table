@@ -44,3 +44,15 @@ def test_unsupported_system_call(syscall_name, arch):
 def test_not_existing_system_call(syscall_name, arch):
     with pytest.raises(system_calls.NoSuchSystemCall):
         syscalls.get(syscall_name, arch)
+
+
+@pytest.mark.parametrize(
+    "syscall_name, arch",
+    [
+        ("not-existing-system-call", "arm65"),
+        ("another-fake-syscall", "x86-64"),
+    ]
+)
+def test_no_such_architecture(syscall_name, arch):
+    with pytest.raises(system_calls.NoSuchArchitecture):
+        syscalls.get(syscall_name, arch)
