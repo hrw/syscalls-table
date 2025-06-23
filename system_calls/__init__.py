@@ -139,7 +139,7 @@ class syscalls(dict):
         Architecture can be provided by second argument (optional, host
         architecture would be used by default).
         """
-        if arch == "":
+        if arch == "" or arch is None:
             arch = self.default_arch
 
         try:
