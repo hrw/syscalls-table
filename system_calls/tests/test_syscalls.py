@@ -18,10 +18,28 @@ syscalls = system_calls.syscalls()
         ("listmount", "riscv64", 458),
     ]
 )
-def test_get_valid_syscalls(syscall_name, arch, expected_number):
-    """Tests for system calls which exist on tested architecture.
+def test_get_valid_syscall_names(syscall_name, arch, expected_number):
+    """Tests for system call names which exist on tested architecture.
     """
     assert syscalls.get(syscall_name, arch) == expected_number
+
+
+@pytest.mark.parametrize(
+    "syscall_number, arch, expected_name",
+    [
+        (2, "x86_64", "open"),
+        (257, "x86_64", "openat"),
+        (56, "arm64", "openat"),
+        (0, "x86_64", "read"),
+        (1, "x86_64", "write"),
+        (60, "x86_64", "exit"),
+        (458, "riscv64", "listmount"),
+    ]
+)
+def test_get_valid_syscall_numbers(syscall_number, arch, expected_name):
+    """Tests for system call numbers which exist on tested architecture.
+    """
+    assert syscalls.get_name(syscall_number, arch) == expected_name
 
 
 @pytest.mark.parametrize(
