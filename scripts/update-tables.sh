@@ -35,7 +35,13 @@ grab_syscall_names_from_tables()
 
 grab_syscall_names_from_unistd_h()
 {
-	grep -E -h "^#define __NR_" ${PWD}/headers/usr/include/asm/unistd*.h \
+	if [[ -n "$private_prefix" ]]
+	then
+		prefixes="(__NR|$private_prefix)"
+	else
+		prefixes="__NR"
+	fi
+	grep -E -h "^#define ${prefixes}_" ${PWD}/headers/usr/include/asm/unistd*.h \
 		                    ${PWD}/headers/usr/include/asm-generic/unistd.h > ${TEMP}/syscall-names.tosort
 
 	drop_bad_entries
@@ -43,10 +49,16 @@ grab_syscall_names_from_unistd_h()
 
 drop_bad_entries()
 {
+	if [[ -n "$private_prefix" ]]
+	then
+		prefixes="\(__NR\|$private_prefix\)"
+	else
+		prefixes="__NR"
+	fi
 	grep -E -v "(unistd.h|NR3264|__NR_syscall|__SC_COMP|__NR_.*Linux|__NR_FAST)"  ${TEMP}/syscall-names.tosort |
 	grep -E -vi "(not implemented|available|unused|reserved|xtensa|spill)" |
 	grep -E -v "(__SYSCALL|SYSCALL_BASE|SYSCALL_MASK)" |
-	sed -e "s/#define\s*__NR_//g" -e "s/\s.*//g" |
+	sed -e "s/#define\s*${prefixes}_//g" -e "s/\s.*//g" |
 	sort -u >${TEMP}/syscall-names.text
 	cat ${DATADIR}/syscall-names.text >>${TEMP}/syscall-names.text
 	grep -w -v -f ${DATADIR}/removed-names.text ${TEMP}/syscall-names.text | sort -u >${DATADIR}/syscall-names.text
@@ -61,6 +73,8 @@ generate_table()
 		extraflags="${extraflags} -D__BITS_PER_LONG=32"
 	fi
 
+	grab_syscall_names_from_unistd_h
+	generate_list_syscalls_c >${TEMP}/list-syscalls.c
 	gcc list-syscalls.c -U__LP64__ -U__ILP32__ -U__i386__ -D${arch^^} \
 		-D__${arch}__ ${extraflags} -I headers/usr/include/ -o list-syscalls &>/dev/null
 	./list-syscalls > "${DATADIR}/tables/syscalls-$arch"
@@ -79,12 +93,21 @@ generate_list_syscalls_c()
 	for syscall in `cat ${DATADIR}/syscall-names.text`
 	do
 		echo "
-	#ifdef __NR_$syscall
-		printf('$syscall\\t%d\\n', __NR_$syscall);
+	#if defined(__NR_$syscall)
+		printf(\"$syscall\\t%d\\n\", __NR_$syscall);"
+
+		if [[ -n "$private_prefix" ]]
+		then
+			echo "
+	#elif defined(${private_prefix}_$syscall)
+		printf(\"$syscall\\t%d\\n\", ${private_prefix}_$syscall);"
+		fi
+
+		echo "
 	#else
-		printf('$syscall\\n');
+		printf(\"$syscall\\n\");
 	#endif
-	"
+"
 	done
 
 	echo " return 0;
@@ -120,13 +143,12 @@ do_all_tables()
 		esac
 
 		export_headers
-		grab_syscall_names_from_unistd_h
 
 		case ${arch} in
 		arm)
 			bits=32
-			arch=armoabi		extraflags=				generate_table
-			arch=arm		extraflags=-D__ARM_EABI__		generate_table
+			arch=armoabi		extraflags=			private_prefix=__ARM_NR	generate_table
+			arch=arm		extraflags=-D__ARM_EABI__	private_prefix=__ARM_NR	generate_table
 			;;
 		loongarch)
 			# 32-bit variant of loongarch may appear
@@ -180,7 +202,7 @@ do_all_tables()
 	done
 
 	echo ""
-	cd -
+	cd - >/dev/null
 }
 
 create_tables_for_python()
@@ -216,7 +238,6 @@ create_tables_for_python()
 }
 
 grab_syscall_names_from_tables
-generate_list_syscalls_c | sed -e "s/'/\"/g">${TEMP}/list-syscalls.c
 
 do_all_tables
 create_tables_for_python
