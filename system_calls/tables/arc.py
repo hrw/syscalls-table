@@ -61,6 +61,8 @@ syscalls_arc = {
     "fcntl64": 25,
     "fdatasync": 83,
     "fgetxattr": 10,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 273,
     "flistxattr": 13,
     "flock": 32,

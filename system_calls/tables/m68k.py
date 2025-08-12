@@ -74,6 +74,8 @@ syscalls_m68k = {
     "fcntl64": 239,
     "fdatasync": 148,
     "fgetxattr": 228,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 348,
     "flistxattr": 231,
     "flock": 143,

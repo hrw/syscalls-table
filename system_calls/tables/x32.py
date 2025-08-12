@@ -62,6 +62,8 @@ syscalls_x32 = {
     "fcntl": 1073741896,
     "fdatasync": 1073741899,
     "fgetxattr": 1073742017,
+    "file_getattr": 1073742292,
+    "file_setattr": 1073742293,
     "finit_module": 1073742137,
     "flistxattr": 1073742020,
     "flock": 1073741897,

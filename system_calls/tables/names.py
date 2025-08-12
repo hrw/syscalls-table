@@ -85,6 +85,8 @@ syscalls_names = [
     "fcntl64",
     "fdatasync",
     "fgetxattr",
+    "file_getattr",
+    "file_setattr",
     "finit_module",
     "flistxattr",
     "flock",

@@ -70,6 +70,8 @@ syscalls_mips64n32 = {
     "fcntl64": 6212,
     "fdatasync": 6073,
     "fgetxattr": 6185,
+    "file_getattr": 6468,
+    "file_setattr": 6469,
     "finit_module": 6312,
     "flistxattr": 6188,
     "flock": 6071,

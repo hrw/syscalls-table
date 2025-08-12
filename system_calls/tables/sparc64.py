@@ -64,6 +64,8 @@ syscalls_sparc64 = {
     "fcntl": 92,
     "fdatasync": 253,
     "fgetxattr": 177,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 342,
     "flistxattr": 180,
     "flock": 131,

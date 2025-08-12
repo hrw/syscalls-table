@@ -67,6 +67,8 @@ syscalls_xtensa = {
     "fcntl64": 61,
     "fdatasync": 27,
     "fgetxattr": 77,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 332,
     "flistxattr": 78,
     "flock": 56,

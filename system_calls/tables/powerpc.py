@@ -70,6 +70,8 @@ syscalls_powerpc = {
     "fcntl64": 204,
     "fdatasync": 148,
     "fgetxattr": 214,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 353,
     "flistxattr": 217,
     "flock": 143,

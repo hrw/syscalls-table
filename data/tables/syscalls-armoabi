@@ -83,6 +83,8 @@ fcntl	9437239
 fcntl64	9437405
 fdatasync	9437332
 fgetxattr	9437415
+file_getattr	9437652
+file_setattr	9437653
 finit_module	9437563
 flistxattr	9437418
 flock	9437327

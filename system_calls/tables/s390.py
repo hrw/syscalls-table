@@ -71,6 +71,8 @@ syscalls_s390 = {
     "fcntl64": 221,
     "fdatasync": 148,
     "fgetxattr": 229,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 344,
     "flistxattr": 232,
     "flock": 143,
