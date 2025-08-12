@@ -64,6 +64,8 @@ syscalls_x86_64 = {
     "fcntl": 72,
     "fdatasync": 75,
     "fgetxattr": 193,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 313,
     "flistxattr": 196,
     "flock": 73,

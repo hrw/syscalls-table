@@ -71,6 +71,8 @@ syscalls_mipso32 = {
     "fcntl64": 4220,
     "fdatasync": 4152,
     "fgetxattr": 4229,
+    "file_getattr": 4468,
+    "file_setattr": 4469,
     "finit_module": 4348,
     "flistxattr": 4232,
     "flock": 4143,

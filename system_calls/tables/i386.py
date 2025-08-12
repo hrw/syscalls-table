@@ -72,6 +72,8 @@ syscalls_i386 = {
     "fcntl64": 221,
     "fdatasync": 148,
     "fgetxattr": 231,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 350,
     "flistxattr": 234,
     "flock": 143,

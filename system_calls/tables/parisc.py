@@ -70,6 +70,8 @@ syscalls_parisc = {
     "fcntl64": 202,
     "fdatasync": 148,
     "fgetxattr": 243,
+    "file_getattr": 468,
+    "file_setattr": 469,
     "finit_module": 333,
     "flistxattr": 246,
     "flock": 143,

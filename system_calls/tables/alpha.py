@@ -61,6 +61,8 @@ syscalls_alpha = {
     "fcntl": 92,
     "fdatasync": 447,
     "fgetxattr": 387,
+    "file_getattr": 578,
+    "file_setattr": 579,
     "finit_module": 507,
     "flistxattr": 390,
     "flock": 131,
