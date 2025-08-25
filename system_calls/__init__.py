@@ -1,5 +1,6 @@
 import importlib
 import os
+from typing import overload
 
 from system_calls.tables.names import syscalls_names
 from system_calls.linux_version import linux_version
@@ -42,6 +43,7 @@ class syscalls:
         self._names = syscalls_names
         self._default_arch = os.uname().machine
         self._loaded_arch_tables = {}
+        self._loaded_reverse_arch_tables = {}
         self._names = syscalls_names
         self.linux_version = linux_version
 
@@ -61,11 +63,31 @@ class syscalls:
                                    f"'{arch}': {e}") from e
         return self._loaded_arch_tables[arch]
 
-    def __getitem__(self, syscall_name: str) -> int:
-        """Returns number for requested system call.
+    def load_reverse_arch_table(self, arch: str):
+        """Loads a reverse architecture table dynamically."""
+        if arch not in self._loaded_reverse_arch_tables:
+            arch_table = self.load_arch_table(arch)
+            self._loaded_reverse_arch_tables[arch] = {number: name for name, number in arch_table.items()}
+        return self._loaded_reverse_arch_tables[arch]
+
+    @overload
+    def __getitem__(self, syscall: str) -> int:
+        ...
+
+    @overload
+    def __getitem__(self, syscall: int) -> str:
+        ...
+
+    def __getitem__(self, syscall):
+        """Returns number or name for requested system call.
         Host architecture would be used.
         """
-        return self.get(syscall_name)
+        if isinstance(syscall, str):
+            return self.get(syscall)
+        elif isinstance(syscall, int):
+            return self.get_name(syscall)
+
+        raise TypeError
 
     def get(self, syscall_name: str, arch: str = "") -> int:  # type: ignore
         """Returns number for requested system call.
@@ -76,10 +98,7 @@ class syscalls:
             arch = self._default_arch
 
         # First, try to load/get the architecture's table
-        try:
-            arch_table = self.load_arch_table(arch)
-        except NoSuchArchitecture:
-            raise NoSuchArchitecture
+        arch_table = self.load_arch_table(arch)
 
         try:
             return arch_table[syscall_name]
@@ -88,6 +107,22 @@ class syscalls:
                 raise NoSuchSystemCall
             else:
                 raise NotSupportedSystemCall
+
+    def get_name(self, syscall_number: int, arch: str = "") -> str:  # type: ignore
+        """Returns name for requested system call number.
+        Architecture can be provided by second argument (optional, host
+        architecture would be used by default).
+        """
+        if arch == "" or arch is None:
+            arch = self._default_arch
+
+        # First, try to load/get the architecture's reverse table
+        reverse_arch_table = self.load_reverse_arch_table(arch)
+
+        try:
+            return reverse_arch_table[syscall_number]
+        except KeyError:
+            raise NoSuchSystemCall
 
     def archs(self) -> list:
         """Returns list of architectures supported by class.
