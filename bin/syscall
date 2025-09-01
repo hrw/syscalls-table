@@ -61,10 +61,15 @@ syscalls = system_calls.syscalls()
 syscalls_list = {}
 
 if len(sys.argv) == 3:
-    if sys.argv[2] in syscalls.archs():
-        syscall_arch = sys.argv[2]
+    syscall_arch = sys.argv[2]
+
+if syscall_arch not in syscalls.archs():
+    if syscall_arch == 'aarch64':
+        syscall_arch = 'arm64'
+    elif syscall_arch in ['x86-64', 'x64']:
+        syscall_arch = 'x86_64'
     else:
-        print(f"Architecture {sys.argv[2]} is not supported.")
+        print(f"Architecture {syscall_arch} is not supported.")
         sys.exit(1)
 
 if sys.argv[1].isnumeric():
