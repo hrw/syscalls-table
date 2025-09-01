@@ -70,7 +70,9 @@ class syscalls:
         """Loads a reverse architecture table dynamically."""
         if arch not in self._loaded_reverse_arch_tables:
             arch_table = self.load_arch_table(arch)
-            self._loaded_reverse_arch_tables[arch] = {number: name for name, number in arch_table.items()}
+            self._loaded_reverse_arch_tables[arch] = {number: name for name,
+                                                      number in
+                                                      arch_table.items()}
         return self._loaded_reverse_arch_tables[arch]
 
     @overload
