@@ -29,43 +29,43 @@
 
 <h1>Linux kernel system calls for all architectures</h1>
     <p>
-    Linux provides many system calls for userspace. But numbers used for them
-    differ between architectures. This page was created to help developers find
-    those values.
+    The Linux kernel provides many system calls for userspace. However, the
+    numbers used for them differ between architectures. This page was created
+    to help developers find those values.
     </p>
     <p>
-    But there is another issue. Some of system calls got dropped during Linux
-    development, some got replaced by newer ones. Several architectures got
-    added into kernel later and their maintainers decided to not bother with
-    supporting obsoleted system calls. They are marked with "-1" value in table
-    below.
+    However, there is another issue. Some of the system calls were dropped
+    during Linux development, while some were replaced by newer ones. Several
+    architectures were added into the kernel later and their maintainers
+    decided not to bother with supporting obsolete system calls. They are
+    marked with "-1" value in the table below.
     </p>
 
 <h2>How to use</h2>
-    <p>There are few features you can use:</p>
+    <p>There are a few features you can use:</p>
 
     <ul>
-        <li>search field allows to filter table by syscall name or number</li>
-        <li>system call names link to their man pages</li>
-        <li>'disable architectures' button allows to disable not needed columns</li>
-        <li>clicking on header entries sorts table</li>
-        <li>columns can be reordered by dragging column header</li>
+        <li>the search field allows you to filter the table by syscall name or number</li>
+        <li>the system call names link to their man pages</li>
+        <li>the 'disable architectures' button allows you to disable unneeded columns</li>
+        <li>clicking on header entries sorts the table</li>
+        <li>columns can be reordered by dragging the column header</li>
     </ul>
 
 <h2>Some notes</h2>
 
     <ul>
-        <li>table is updated at random moments &mdash; usually somewhere after rc1 kernel release</li>
-        <li>old data is used for architectures removed from Linux kernel (everything from avr32 to the end of table)</li>
+        <li>the table is updated at random moments &mdash; usually somewhere after the rc1 kernel release</li>
+        <li>old data is used for architectures removed from the Linux kernel (everything from avr32 to the end of the table)</li>
         <li>system calls specific to removed architectures were dropped</li>
         <li>system calls listed in <code>man 2 unimplemented</code> are not listed</li>
-        <li>there is now Python module for querying this data: "system_calls"</li>
+        <li>there is now a Python module for querying this data: "system_calls"</li>
     </ul>
 
 <h2>Projects using data</h2>
     <p>
-    If this table helped you in some project then please leave a comment in
-    <a href="https://github.com/hrw/syscalls-table/issues/12">issue on GitHub</a>.
+    If this table has been helpful to you on a project, then please leave a comment in
+    <a href="https://github.com/hrw/syscalls-table/issues/12">the relevant issue on GitHub</a>.
     </p>
 
 {% include "common/author-tables-help.inc.j2" %}
