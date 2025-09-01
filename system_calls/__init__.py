@@ -41,6 +41,9 @@ class syscalls:
 
         self._names = syscalls_names
         self._default_arch = os.uname().machine
+        if self._default_arch == 'aarch64':
+            self._default_arch = 'arm64'
+
         self._loaded_arch_tables = {}
         self._names = syscalls_names
         self.linux_version = linux_version
