@@ -1,0 +1,29 @@
+[project]
+name = "system_calls"
+version = "6.17.0"
+description = "Python module to check for system call number/name and availability"
+authors = [
+    {name = "Marcin Juszkiewicz", email = "marcin-python@juszkiewicz.com.pl"},
+]
+dependencies = [
+    "jinja2",
+]
+requires-python = ">=3.6"
+readme = "README.md"
+license = "MIT"
+classifiers = [
+        "Programming Language :: Python :: 3",
+        "Operating System :: POSIX :: Linux",
+]
+
+[project.urls]
+homepage = "https://github.com/hrw/syscalls-table/"
+repository = "https://github.com/hrw/syscalls-table/"
+"Bug Tracker" = "https://github.com/hrw/syscalls-table/issues/"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["system_calls", "system_calls/tables/", "system_calls/tests/"]
