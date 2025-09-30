@@ -26,6 +26,7 @@ setuptools.setup(
     packages=["system_calls", "system_calls/tables/", "system_calls/tests/"],
     python_requires=">=3.6",
     license_files=["LICENSE"],
-    scripts=["bin/syscall"],
+    entry_points={'console_scripts': ["syscall = system_calls.cli:main"]},
     data_files=[("share/man/man1", ["man/syscall.1"])],
+    install_requires=['jinja2'],
 )
