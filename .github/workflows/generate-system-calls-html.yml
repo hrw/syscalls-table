@@ -1,6 +1,7 @@
 name: Generate system calls HTML table
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "master" ]
   pull_request:
@@ -8,24 +9,33 @@ on:
 
 jobs:
   generate-html:
+    name: Generate system calls HTML table
     permissions:
       contents: read
-      id-token: write
-      pages: write
-    needs:
-      - build
-
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Set up Python (latest)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
       - name: Install 'system calls' package
-        working-directory: syscalls-table/
         run: |
-          . /tmp/venv/bin/activate
           pip install .
 
       - name: Generate system calls HTML
-        working-directory: syscalls-table/
         run: |
-          mkdir -p out
-          . /tmp/venv/bin/activate
-          python3 examples/generate-html-table.py > out/syscalls.html
+          # Store in path used on Github Pages
+          mkdir -p out/syscalls-table
+          python3 examples/generate-html-table.py > out/syscalls-table/syscalls.html
+
+      - name: Upload HTML as artifact (for Pages deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: syscalls-html-page
+          path: out/
+
