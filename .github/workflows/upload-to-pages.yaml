@@ -1,0 +1,59 @@
+name: Upload HTML table to Github Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+    - "master"
+  workflow_run:
+    workflows: ["Update system calls page"]
+    types:
+      - completed
+
+jobs:
+  deploy-to-pages:
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    needs:
+      - generate-html
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout syscalls-table
+        uses: actions/checkout@v4
+        with:
+          path: syscalls-table/
+          ref: master
+          submodules: true
+
+      - name: Create Python virtualenv
+        working-directory: syscalls-table/
+        run: |
+          python3 -m venv /tmp/venv
+
+      - name: Install 'system calls' package
+        working-directory: syscalls-table/
+        run: |
+          . /tmp/venv/bin/activate
+          pip install .
+
+      - name: Generate system calls HTML
+        working-directory: syscalls-table/
+        run: |
+          mkdir -p out
+          . /tmp/venv/bin/activate
+          python3 examples/generate-html-table.py > out/syscalls.html
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: syscalls-table/out/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
