@@ -33,12 +33,6 @@ jobs:
         run: |
           python3 -m venv /tmp/venv
 
-      - name: Install Python packages
-        working-directory: syscalls-table/
-        run: |
-          . /tmp/venv/bin/activate
-          pip install -r requirements.txt
-
       - name: Install 'system calls' package
         working-directory: syscalls-table/
         run: |
