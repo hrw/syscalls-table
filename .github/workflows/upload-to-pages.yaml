@@ -42,7 +42,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: syscalls-table/out/
+          path: out/
 
       - name: Deploy to GitHub Pages
         id: deployment
