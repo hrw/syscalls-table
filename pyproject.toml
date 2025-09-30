@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools >= 77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "system-calls"
+version = "6.17.0"
+authors = [
+    {name = "Marcin Juszkiewicz", email = "marcin-python@juszkiewicz.com.pl"}
+]
+description = "Python module to check for system call number/name and availability"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Operating System :: POSIX :: Linux"
+]
+dependencies = [
+    "jinja2"
+]
+requires-python = ">=3.6"
+license-files = ["LICENSE"]
+license = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/hrw/syscalls-table"
+Issues =  "https://github.com/hrw/syscalls-table/issues"
+
+[project.scripts]
+syscall = "system_calls.cli:main"
+
+[tool.setuptools]
+packages = ["system_calls"]
+
+[tool.setuptools.package-data]
+system_calls = ["share/man/man1", "man/syscall.1"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
