@@ -30,7 +30,7 @@ Issues =  "https://github.com/hrw/syscalls-table/issues"
 syscall = "system_calls.cli:main"
 
 [tool.setuptools]
-packages = ["system_calls"]
+packages = ["system_calls", "system_calls.tables"]
 
 [tool.setuptools.package-data]
 system_calls = ["share/man/man1", "man/syscall.1"]
