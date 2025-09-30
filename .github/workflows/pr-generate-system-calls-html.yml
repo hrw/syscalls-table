@@ -1,9 +1,6 @@
 name: Generate system calls HTML table
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -35,10 +32,3 @@ jobs:
           # Store in path used on Github Pages
           mkdir -p out/syscalls-table
           python3 examples/generate-html-table.py > out/syscalls-table/syscalls.html
-
-      - name: Upload HTML as artifact (for Pages deployment)
-        uses: actions/upload-artifact@v4
-        with:
-          name: syscalls-html-page
-          path: out/
-

@@ -1,17 +1,13 @@
-name: Upload HTML table to Github Pages
+name: Generate system calls HTML table and upload to Github Pages
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Generate system calls HTML table"]
-    types:
-      - completed
+  push:
+    branches: [ "master" ]
 
 jobs:
   deploy-to-pages:
-    name: Upload HTML table to Github Pages
-    # only if generation of HTML worked
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Update HTML table on Github Pages
     permissions:
       contents: read
       id-token: write
@@ -19,13 +15,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifact from HTML Generator
-        uses: actions/download-artifact@v4
+      - name: Checkout sources
+        uses: actions/checkout@v4
+        # we need templates/common
         with:
-          name: syscalls-html-page
-          path: out/
-          # Use the run_id of the workflow that just completed
-          run-id: ${{ github.event.workflow_run.id }}
+          submodules: true
+
+      - name: Set up Python (latest)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install 'system calls' package
+        run: |
+          pip install .
+
+      - name: Generate system calls HTML
+        run: |
+          # Store in path used on Github Pages
+          mkdir -p out/syscalls-table
+          python3 examples/generate-html-table.py > out/syscalls-table/syscalls.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
