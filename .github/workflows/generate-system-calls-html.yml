@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
+        # we need templates/common
+        with:
+          submodules: true
 
       - name: Set up Python (latest)
         uses: actions/setup-python@v5
