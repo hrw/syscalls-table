@@ -8,10 +8,7 @@ on:
 jobs:
   publish-to-pypi:
     name: Publish Python package to PyPI
-    needs:
-    - build
     runs-on: ubuntu-latest
-
     environment:
       name: pypi
       url: https://pypi.org/p/system-calls
@@ -19,11 +16,26 @@ jobs:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
     steps:
-    - name: Download all the dists
-      uses: actions/download-artifact@v4
+    # Copy of steps from build.yaml
+    - name: Checkout sources
+      uses: actions/checkout@v4
+
+    - name: Set up Python (latest)
+      uses: actions/setup-python@v5
       with:
-        name: python-package-distributions
-        path: dist/
+        python-version: "3.x"
+
+    - name: Install dependencies
+      run: python3 -m pip install build pytest
+
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+
+    - name: Install system_calls
+      run: python3 -m pip install dist/system_calls-*.whl
+
+    - name: Run pytest
+      run: pytest -v system_calls/tests/test*.py
 
     - name: Publish package to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

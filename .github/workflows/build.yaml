@@ -1,4 +1,4 @@
-name: Build Python package
+name: Build Python package and run tests
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build package
+    name: Build and test
     runs-on: ubuntu-latest
 
     steps:
@@ -20,23 +20,14 @@ jobs:
       with:
         python-version: "3.x"
 
-    - name: Install pypa/build
-      run: python3 -m pip install build --user
+    - name: Install dependencies
+      run: python3 -m pip install build pytest
 
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
 
     - name: Install system_calls
-      run: python3 -m pip install dist/system_calls-*.whl --user
-
-    - name: Install pytest
-      run: python3 -m pip install pytest --user
+      run: python3 -m pip install dist/system_calls-*.whl
 
     - name: Run pytest
       run: pytest -v system_calls/tests/test*.py
-
-    - name: Store the distribution packages
-      uses: actions/upload-artifact@v4
-      with:
-        name: python-package-distributions
-        path: dist/
