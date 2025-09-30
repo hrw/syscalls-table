@@ -23,7 +23,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: syscalls-html-page
-          path: out
+          path: out/
           # Use the run_id of the workflow that just completed
           run-id: ${{ github.event.workflow_run.id }}
 
