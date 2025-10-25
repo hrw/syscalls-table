@@ -31,9 +31,4 @@ syscall = "system_calls.cli:main"
 
 [tool.setuptools]
 packages = ["system_calls", "system_calls.tables"]
-
-[tool.setuptools.package-data]
-system_calls = ["share/man/man1", "man/syscall.1"]
-
-[tool.pytest.ini_options]
-pythonpath = ["."]
+include-package-data = false

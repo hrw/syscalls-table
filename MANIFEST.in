@@ -1,0 +1,2 @@
+include man/syscall.1
+include system_calls/tests/*.py
