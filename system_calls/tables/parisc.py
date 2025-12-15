@@ -159,6 +159,7 @@ syscalls_parisc = {
     "linkat": 283,
     "listen": 32,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 244,
     "listxattrat": 465,
     "llistxattr": 245,

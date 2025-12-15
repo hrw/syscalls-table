@@ -172,6 +172,7 @@ syscalls_microblaze = {
     "linkat": 303,
     "listen": 348,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 232,
     "listxattrat": 465,
     "llistxattr": 233,

@@ -155,6 +155,7 @@ syscalls_mips64n32 = {
     "linkat": 6259,
     "listen": 6049,
     "listmount": 6458,
+    "listns": 6470,
     "listxattr": 6186,
     "listxattrat": 6465,
     "llistxattr": 6187,

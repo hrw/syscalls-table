@@ -172,6 +172,7 @@ syscalls_armoabi = {
     "linkat": 9437514,
     "listen": 9437468,
     "listmount": 9437642,
+    "listns": 9437654,
     "listxattr": 9437416,
     "listxattrat": 9437649,
     "llistxattr": 9437417,

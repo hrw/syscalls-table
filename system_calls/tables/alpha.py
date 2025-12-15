@@ -152,6 +152,7 @@ syscalls_alpha = {
     "linkat": 458,
     "listen": 106,
     "listmount": 568,
+    "listns": 580,
     "listxattr": 388,
     "listxattrat": 575,
     "llistxattr": 389,

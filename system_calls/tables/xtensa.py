@@ -153,6 +153,7 @@ syscalls_xtensa = {
     "linkat": 293,
     "listen": 102,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 70,
     "listxattrat": 465,
     "llistxattr": 74,

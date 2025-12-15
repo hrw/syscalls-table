@@ -162,6 +162,7 @@ syscalls_powerpc = {
     "linkat": 294,
     "listen": 329,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 215,
     "listxattrat": 465,
     "llistxattr": 216,

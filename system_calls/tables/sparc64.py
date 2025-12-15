@@ -153,6 +153,7 @@ syscalls_sparc64 = {
     "linkat": 292,
     "listen": 354,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 178,
     "listxattrat": 465,
     "llistxattr": 179,

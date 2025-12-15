@@ -145,6 +145,7 @@ syscalls_s390x = {
     "linkat": 296,
     "listen": 363,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 230,
     "listxattrat": 465,
     "llistxattr": 231,

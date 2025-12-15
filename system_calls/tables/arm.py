@@ -169,6 +169,7 @@ syscalls_arm = {
     "linkat": 330,
     "listen": 284,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 232,
     "listxattrat": 465,
     "llistxattr": 233,

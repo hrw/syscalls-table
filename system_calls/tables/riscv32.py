@@ -123,6 +123,7 @@ syscalls_riscv32 = {
     "linkat": 37,
     "listen": 201,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 11,
     "listxattrat": 465,
     "llistxattr": 12,

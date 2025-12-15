@@ -162,6 +162,7 @@ syscalls_mipso32 = {
     "linkat": 4296,
     "listen": 4174,
     "listmount": 4458,
+    "listns": 4470,
     "listxattr": 4230,
     "listxattrat": 4465,
     "llistxattr": 4231,

@@ -172,6 +172,7 @@ syscalls_m68k = {
     "linkat": 296,
     "listen": 360,
     "listmount": 458,
+    "listns": 470,
     "listxattr": 229,
     "listxattrat": 465,
     "llistxattr": 230,
