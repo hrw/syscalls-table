@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "system-calls"
-version = "6.17.0"
+version = "6.19.0-rc1"
 authors = [
     {name = "Marcin Juszkiewicz", email = "marcin-python@juszkiewicz.com.pl"}
 ]
