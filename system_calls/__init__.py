@@ -33,11 +33,11 @@ class syscalls:
         self._archs = [
             "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
             "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386", "ia64",
-            "loongarch64", "m32r", "m68k", "metag", "microblaze", "mips64n32",
-            "mips64", "mipso32", "mn10300", "nds32", "nios2", "openrisc",
-            "parisc", "powerpc64", "powerpc", "riscv32", "riscv64", "s390",
-            "s390x", "score", "sh64", "sh", "sparc64", "sparc", "tile64",
-            "tile", "unicore32", "x32", "x86_64", "xtensa"
+            "loongarch32", "loongarch64", "m32r", "m68k", "metag",
+            "microblaze", "mips64n32", "mips64", "mipso32", "mn10300", "nds32",
+            "nios2", "openrisc", "parisc", "powerpc64", "powerpc", "riscv32",
+            "riscv64", "s390", "s390x", "score", "sh64", "sh", "sparc64",
+            "sparc", "tile64", "tile", "unicore32", "x32", "x86_64", "xtensa"
         ]
 
         self._names = syscalls_names

@@ -151,7 +151,7 @@ do_all_tables()
 			arch=arm		extraflags=-D__ARM_EABI__	private_prefix=__ARM_NR	generate_table
 			;;
 		loongarch)
-			# 32-bit variant of loongarch may appear
+			arch=loongarch32	extraflags=-D__BITS_PER_LONG=32		generate_table
 			arch=loongarch64	extraflags=-D_LOONGARCH_SZLONG=64	generate_table
 			;;
 		mips)

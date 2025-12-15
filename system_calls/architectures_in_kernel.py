@@ -7,6 +7,7 @@ architectures = [
     "arm64",
     "csky",
     "hexagon",
+    "loongarch32",
     "loongarch64",
     "m68k",
     "microblaze",
