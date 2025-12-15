@@ -151,8 +151,9 @@ do_all_tables()
 			arch=arm		extraflags=-D__ARM_EABI__	private_prefix=__ARM_NR	generate_table
 			;;
 		loongarch)
-			arch=loongarch32	extraflags=-D__BITS_PER_LONG=32		generate_table
 			arch=loongarch64	extraflags=-D_LOONGARCH_SZLONG=64	generate_table
+			bits=32
+			arch=loongarch32						generate_table
 			;;
 		mips)
 			arch=mips64		extraflags=-D_MIPS_SIM=_MIPS_SIM_ABI64	generate_table
