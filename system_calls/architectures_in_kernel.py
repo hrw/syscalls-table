@@ -22,7 +22,6 @@ architectures = [
     "powerpc64",
     "riscv64",
     "riscv32",
-    "s390",
     "s390x",
     "sh",
     "sparc",

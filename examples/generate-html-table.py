@@ -20,7 +20,6 @@ def create_arch_list(present_archs):
         "powerpc64",
         "powerpc",
         "s390x",
-        "s390",
     ]
 
     removed_archs = []
