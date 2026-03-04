@@ -17,6 +17,8 @@ def create_arch_list(present_archs):
         "x86_64",
         "x32",
         "i386",
+        "riscv64",
+        "riscv32",
         "powerpc64",
         "powerpc",
         "s390x",
