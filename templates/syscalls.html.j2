@@ -105,13 +105,30 @@
             colReorder:         true,
             mark:               true,
             dom:                'Bft',
-            buttons:            [ {
+            buttons:            [
+                                {
                                     extend : 'colvis',
                                     text: 'disable architectures',
                                     columns: ':gt(0)',
                                     collectionLayout: "fixed columns",
                                     className: "btn-light py-1 mb-1",
-                                } ]
+                                },
+                                {
+                                    extend: 'colvisGroup',
+                                    text: 'Hide removed architectures',
+                                    hide: {{ hide_removed_archs }}
+                                },
+                                {
+                                    extend: 'colvisGroup',
+                                    text: 'Hide all architectures',
+                                    hide: {{ hide_all_archs }}
+                                },
+                                {
+                                    extend: 'colvisGroup',
+                                    text: 'Show all architectures',
+                                    show: ':hidden'
+                                },
+                                ]
     });
 </script>
 </html>

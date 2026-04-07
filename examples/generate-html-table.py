@@ -37,7 +37,7 @@ def create_arch_list(present_archs):
     for arch in removed_archs:
         archs.append(arch)
 
-    return archs
+    return archs, removed_archs
 
 
 def generate_system_calls_tree():
@@ -66,9 +66,13 @@ def generate_html_file():
 
     template = env.get_template('syscalls.html.j2')
 
+    archs, removed_archs = create_arch_list(syscalls.archs())
+
     output = template.render(generate_time=datetime.strftime(
                              datetime.now(timezone.utc), "%d %B %Y %H:%M"),
-                             archs=create_arch_list(syscalls.archs()),
+                             archs=archs,
+                             hide_removed_archs=list(range(len(archs) - len(removed_archs) + 1, len(archs) + 1)),
+                             hide_all_archs=list(range(1, len(archs) + 1)),
                              syscalls=generate_system_calls_tree(),
                              syscall_names=syscalls.names(),
                              git_repo="syscalls-table",
