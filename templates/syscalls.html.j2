@@ -47,7 +47,8 @@
     <ul>
         <li>the search field allows you to filter the table by syscall name or number</li>
         <li>the system call names link to their man pages</li>
-        <li>the 'disable architectures' button allows you to disable unneeded columns</li>
+        <li>the 'Select architectures' button allows you to enable/disable columns</li>
+        <li>the 'Hide removed architectures' button allows you to hide all architectures not present in current version of the Linux kernel</li>
         <li>clicking on header entries sorts the table</li>
         <li>columns can be reordered by dragging the column header</li>
     </ul>
@@ -108,7 +109,7 @@
             buttons:            [
                                 {
                                     extend : 'colvis',
-                                    text: 'disable architectures',
+                                    text: 'Select architectures',
                                     columns: ':gt(0)',
                                     collectionLayout: "fixed columns",
                                     className: "btn-light py-1 mb-1",
