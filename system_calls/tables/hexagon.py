@@ -236,6 +236,7 @@ syscalls_hexagon = {
     "request_key": 218,
     "restart_syscall": 128,
     "rseq": 293,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 134,
     "rt_sigpending": 136,
     "rt_sigprocmask": 135,

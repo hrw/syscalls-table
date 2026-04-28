@@ -293,6 +293,7 @@ syscalls_alpha = {
     "restart_syscall": 412,
     "rmdir": 137,
     "rseq": 527,
+    "rseq_slice_yield": 581,
     "rt_sigaction": 352,
     "rt_sigpending": 354,
     "rt_sigprocmask": 353,

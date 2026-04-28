@@ -285,6 +285,7 @@ syscalls_arm = {
     "restart_syscall": 0,
     "rmdir": 40,
     "rseq": 398,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 174,
     "rt_sigpending": 176,
     "rt_sigprocmask": 175,

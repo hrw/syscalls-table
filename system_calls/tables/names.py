@@ -361,6 +361,7 @@ syscalls_names = [
     "riscv_hwprobe",
     "rmdir",
     "rseq",
+    "rseq_slice_yield",
     "rt_sigaction",
     "rt_sigpending",
     "rt_sigprocmask",

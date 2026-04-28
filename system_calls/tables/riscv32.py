@@ -219,6 +219,7 @@ syscalls_riscv32 = {
     "riscv_flush_icache": 259,
     "riscv_hwprobe": 258,
     "rseq": 293,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 134,
     "rt_sigpending": 136,
     "rt_sigprocmask": 135,

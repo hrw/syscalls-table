@@ -261,6 +261,7 @@ syscalls_parisc64 = {
     "restart_syscall": 0,
     "rmdir": 40,
     "rseq": 354,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 174,
     "rt_sigpending": 176,
     "rt_sigprocmask": 175,

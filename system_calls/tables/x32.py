@@ -255,6 +255,7 @@ syscalls_x32 = {
     "restart_syscall": 1073742043,
     "rmdir": 1073741908,
     "rseq": 1073742158,
+    "rseq_slice_yield": 1073742295,
     "rt_sigaction": 1073742336,
     "rt_sigpending": 1073742346,
     "rt_sigprocmask": 1073741838,

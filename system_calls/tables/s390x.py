@@ -254,6 +254,7 @@ syscalls_s390x = {
     "restart_syscall": 7,
     "rmdir": 40,
     "rseq": 383,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 174,
     "rt_sigpending": 176,
     "rt_sigprocmask": 175,

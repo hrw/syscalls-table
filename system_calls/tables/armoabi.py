@@ -290,6 +290,7 @@ syscalls_armoabi = {
     "restart_syscall": 9437184,
     "rmdir": 9437224,
     "rseq": 9437582,
+    "rseq_slice_yield": 9437655,
     "rt_sigaction": 9437358,
     "rt_sigpending": 9437360,
     "rt_sigprocmask": 9437359,

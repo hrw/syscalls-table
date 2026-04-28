@@ -287,6 +287,7 @@ syscalls_powerpc = {
     "restart_syscall": 0,
     "rmdir": 40,
     "rseq": 387,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 173,
     "rt_sigpending": 175,
     "rt_sigprocmask": 174,

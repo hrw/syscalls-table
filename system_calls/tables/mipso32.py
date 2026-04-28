@@ -278,6 +278,7 @@ syscalls_mipso32 = {
     "restart_syscall": 4253,
     "rmdir": 4040,
     "rseq": 4367,
+    "rseq_slice_yield": 4471,
     "rt_sigaction": 4194,
     "rt_sigpending": 4196,
     "rt_sigprocmask": 4195,

@@ -264,6 +264,7 @@ syscalls_xtensa = {
     "restart_syscall": 223,
     "rmdir": 39,
     "rseq": 352,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 226,
     "rt_sigpending": 228,
     "rt_sigprocmask": 227,

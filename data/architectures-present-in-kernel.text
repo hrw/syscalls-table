@@ -5,8 +5,8 @@ arm
 arm64
 csky
 hexagon
-loongarch32
 loongarch64
+loongarch32
 m68k
 microblaze
 mips64

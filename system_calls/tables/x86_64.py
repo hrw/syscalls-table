@@ -258,6 +258,7 @@ syscalls_x86_64 = {
     "restart_syscall": 219,
     "rmdir": 84,
     "rseq": 334,
+    "rseq_slice_yield": 471,
     "rt_sigaction": 13,
     "rt_sigpending": 127,
     "rt_sigprocmask": 14,

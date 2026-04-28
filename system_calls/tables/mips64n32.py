@@ -266,6 +266,7 @@ syscalls_mips64n32 = {
     "restart_syscall": 6214,
     "rmdir": 6082,
     "rseq": 6331,
+    "rseq_slice_yield": 6471,
     "rt_sigaction": 6013,
     "rt_sigpending": 6125,
     "rt_sigprocmask": 6014,
