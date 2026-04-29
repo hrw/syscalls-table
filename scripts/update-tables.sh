@@ -66,6 +66,8 @@ drop_bad_entries()
 
 generate_table()
 {
+	rm -f ${TEMP}/list-syscalls.c ${TEMP}/list-syscalls
+
 	echo -n "$arch "
 	echo $arch >> ${DATADIR}/architectures-present-in-kernel.text
 
@@ -77,7 +79,12 @@ generate_table()
 	generate_list_syscalls_c >${TEMP}/list-syscalls.c
 	gcc list-syscalls.c -U__LP64__ -U__ILP32__ -U__i386__ -D${arch^^} \
 		-D__${arch}__ ${extraflags} -I headers/usr/include/ -o list-syscalls &>/dev/null
-	./list-syscalls > "${DATADIR}/tables/syscalls-$arch"
+
+	if [ $? -eq 0 ]; then
+		./list-syscalls > "${DATADIR}/tables/syscalls-$arch"
+	else
+		echo -e "\n\nFailed to compile list-syscalls for $arch\n"
+	fi
 }
 
 generate_list_syscalls_c()
