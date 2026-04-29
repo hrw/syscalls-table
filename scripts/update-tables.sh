@@ -177,7 +177,6 @@ do_all_tables()
 			arch=riscv32		extraflags=-D__SIZEOF_POINTER__=4	generate_table
 			;;
 		s390)
-			bits=64
 			arch=s390x							generate_table
 			;;
 		sparc)
