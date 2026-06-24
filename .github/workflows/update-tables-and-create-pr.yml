@@ -66,7 +66,7 @@ jobs:
           fi
 
       - name: Upload changes as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: updated-tables-data
           path: syscalls-table/
