@@ -59,7 +59,7 @@ jobs:
         working-directory: syscalls-table/
         run: |
           # Check for changes other than Linux kernel version change and export a flag
-          if git status --porcelain=v1 | grep -v system_calls/linux_version.py | grep -q '^\(M\|A\|D\)'; then
+          if git status --porcelain=v1 | grep -v system_calls/linux_version.py | grep -q '^ \(M\|A\|D\)'; then
             echo "changes_detected=true" >> $GITHUB_OUTPUT
           else
             echo "changes_detected=false" >> $GITHUB_OUTPUT
