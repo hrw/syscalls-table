@@ -54,6 +54,11 @@ jobs:
           echo "VERSION=$LINUX_VER" >> $GITHUB_ENV
           echo "linux_version=$LINUX_VER" >> $GITHUB_OUTPUT
 
+      - name: Show changes
+        working-directory: syscalls-table/
+        run: |
+          git diff
+
       - name: Check for changes
         id: check_syscalls_changes
         working-directory: syscalls-table/
