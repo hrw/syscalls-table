@@ -29,14 +29,14 @@ jobs:
         run: sudo apt-get install libc6-dev-x32
 
       - name: Checkout syscalls-table
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: syscalls-table/
           ref: master
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout Linux
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: linux
           repository: torvalds/linux
