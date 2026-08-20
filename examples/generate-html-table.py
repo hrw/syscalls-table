@@ -7,7 +7,7 @@ import system_calls
 from system_calls import architectures_in_kernel
 
 
-def create_arch_list(present_archs):
+def create_arch_list():
 
     # the main ones go first
     archs = [
@@ -26,18 +26,16 @@ def create_arch_list(present_archs):
 
     removed_archs = []
 
-    for arch in sorted(present_archs):
+    for arch in sorted(architectures_in_kernel.architectures):
         if arch in archs:
             continue
-        elif arch in architectures_in_kernel.architectures:
-            archs.append(arch)
         else:
-            removed_archs.append(arch)
+            archs.append(arch)
 
-    for arch in removed_archs:
+    for arch in syscalls.removed_archs():
         archs.append(arch)
 
-    return archs, removed_archs
+    return archs
 
 
 def generate_system_calls_tree():
@@ -46,10 +44,12 @@ def generate_system_calls_tree():
         'linux_version': system_calls.linux_version
     }
 
+    archs = syscalls.archs()
+
     for syscall_name in syscalls.names():
         syscalls_for_template[syscall_name] = {}
 
-        for arch in syscalls.archs():
+        for arch in archs:
             try:
                 syscalls_for_template[syscall_name][arch] = (
                     syscalls.get(syscall_name, arch))
@@ -66,12 +66,15 @@ def generate_html_file():
 
     template = env.get_template('syscalls.html.j2')
 
-    archs, removed_archs = create_arch_list(syscalls.archs())
+    archs = create_arch_list()
 
     output = template.render(generate_time=datetime.strftime(
                              datetime.now(timezone.utc), "%d %B %Y %H:%M"),
                              archs=archs,
-                             hide_removed_archs=list(range(len(archs) - len(removed_archs) + 1, len(archs) + 1)),
+                             hide_removed_archs=list(
+                                 range(len(archs) -
+                                       len(syscalls.removed_archs()) + 1,
+                                       len(archs) + 1)),
                              hide_all_archs=list(range(1, len(archs) + 1)),
                              syscalls=generate_system_calls_tree(),
                              syscall_names=syscalls.names(),
