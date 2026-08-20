@@ -133,6 +133,12 @@ class syscalls:
         """
         return self._archs
 
+    def removed_archs(self) -> list:
+        """Returns list of architectures no longer supported by mainline Linux
+        kernel.
+        """
+        return self._removed_archs
+
     def names(self) -> list:
         """Returns list of system calls known by class."""
         return self._names
