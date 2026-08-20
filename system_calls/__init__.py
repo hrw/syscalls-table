@@ -4,6 +4,7 @@ from typing import overload
 
 from system_calls.tables.names import syscalls_names
 from system_calls.linux_version import linux_version
+from system_calls.architectures_in_kernel import architectures
 
 
 class NoSuchSystemCall(Exception):
@@ -30,15 +31,12 @@ class NoSuchArchitecture(Exception):
 
 class syscalls:
     def __init__(self):
-        self._archs = [
-            "alpha", "arc", "arm64", "armoabi", "arm", "avr32", "blackfin",
-            "c6x", "cris", "csky", "frv", "h8300", "hexagon", "i386", "ia64",
-            "loongarch32", "loongarch64", "m32r", "m68k", "metag",
-            "microblaze", "mips64n32", "mips64", "mipso32", "mn10300", "nds32",
-            "nios2", "openrisc", "parisc", "powerpc64", "powerpc", "riscv32",
-            "riscv64", "s390", "s390x", "score", "sh64", "sh", "sparc64",
-            "sparc", "tile64", "tile", "unicore32", "x32", "x86_64", "xtensa"
-        ]
+        self._removed_archs = ['avr32', 'blackfin', 'c6x', 'cris', 'frv',
+                               'h8300', 'ia64', 'm32r', 'metag', 'mn10300',
+                               'nds32', 's390', 'score', 'sh64', 'tile',
+                               'tile64', 'unicore32']
+
+        self._archs = sorted(architectures + self._removed_archs)
 
         self._names = syscalls_names
         self._default_arch = os.uname().machine
