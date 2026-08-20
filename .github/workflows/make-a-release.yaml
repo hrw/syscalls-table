@@ -14,6 +14,7 @@ jobs:
       url: https://pypi.org/p/system-calls
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
+      contents: write  # required to create a GitHub release
 
     steps:
     # Copy of steps from build.yaml
@@ -39,3 +40,10 @@ jobs:
 
     - name: Publish package to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        generate_release_notes: true
