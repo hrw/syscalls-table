@@ -57,6 +57,7 @@ syscalls_s390x = {
     "fchmodat2": 452,
     "fchown": 207,
     "fchownat": 291,
+    "fchroot": 472,
     "fcntl": 55,
     "fdatasync": 148,
     "fgetxattr": 229,

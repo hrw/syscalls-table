@@ -67,6 +67,7 @@ syscalls_mipso32 = {
     "fchmodat2": 4452,
     "fchown": 4095,
     "fchownat": 4291,
+    "fchroot": 4472,
     "fcntl": 4055,
     "fcntl64": 4220,
     "fdatasync": 4152,

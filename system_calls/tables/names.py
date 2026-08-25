@@ -82,6 +82,7 @@ syscalls_names = [
     "fchown",
     "fchown32",
     "fchownat",
+    "fchroot",
     "fcntl",
     "fcntl64",
     "fdatasync",

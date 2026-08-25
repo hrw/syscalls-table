@@ -55,6 +55,7 @@ syscalls_nios2 = {
     "fchmodat2": 452,
     "fchown": 55,
     "fchownat": 54,
+    "fchroot": 472,
     "fcntl64": 25,
     "fdatasync": 83,
     "fgetxattr": 10,

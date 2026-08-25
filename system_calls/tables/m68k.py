@@ -70,6 +70,7 @@ syscalls_m68k = {
     "fchown": 95,
     "fchown32": 207,
     "fchownat": 291,
+    "fchroot": 472,
     "fcntl": 55,
     "fcntl64": 239,
     "fdatasync": 148,

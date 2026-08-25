@@ -66,6 +66,7 @@ syscalls_parisc = {
     "fchmodat2": 452,
     "fchown": 95,
     "fchownat": 278,
+    "fchroot": 472,
     "fcntl": 55,
     "fcntl64": 202,
     "fdatasync": 148,
