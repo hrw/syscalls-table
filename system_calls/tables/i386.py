@@ -68,6 +68,7 @@ syscalls_i386 = {
     "fchown": 95,
     "fchown32": 207,
     "fchownat": 298,
+    "fchroot": 472,
     "fcntl": 55,
     "fcntl64": 221,
     "fdatasync": 148,

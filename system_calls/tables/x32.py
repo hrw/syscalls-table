@@ -59,6 +59,7 @@ syscalls_x32 = {
     "fchmodat2": 1073742276,
     "fchown": 1073741917,
     "fchownat": 1073742084,
+    "fchroot": 1073742296,
     "fcntl": 1073741896,
     "fdatasync": 1073741899,
     "fgetxattr": 1073742017,

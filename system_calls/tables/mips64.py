@@ -61,6 +61,7 @@ syscalls_mips64 = {
     "fchmodat2": 5452,
     "fchown": 5091,
     "fchownat": 5250,
+    "fchroot": 5472,
     "fcntl": 5070,
     "fdatasync": 5073,
     "fgetxattr": 5185,

@@ -69,6 +69,7 @@ syscalls_armoabi = {
     "fchown": 9437279,
     "fchown32": 9437391,
     "fchownat": 9437509,
+    "fchroot": 9437656,
     "fcntl": 9437239,
     "fcntl64": 9437405,
     "fdatasync": 9437332,
