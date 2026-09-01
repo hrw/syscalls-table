@@ -61,6 +61,7 @@ syscalls_x86_64 = {
     "fchmodat2": 452,
     "fchown": 93,
     "fchownat": 260,
+    "fchroot": 472,
     "fcntl": 72,
     "fdatasync": 75,
     "fgetxattr": 193,

@@ -62,6 +62,7 @@ syscalls_sparc64 = {
     "fchmodat2": 452,
     "fchown": 123,
     "fchownat": 287,
+    "fchroot": 472,
     "fcntl": 92,
     "fdatasync": 253,
     "fgetxattr": 177,

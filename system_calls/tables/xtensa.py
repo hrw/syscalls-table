@@ -63,6 +63,7 @@ syscalls_xtensa = {
     "fchmodat2": 452,
     "fchown": 53,
     "fchownat": 297,
+    "fchroot": 472,
     "fcntl": 67,
     "fcntl64": 61,
     "fdatasync": 27,

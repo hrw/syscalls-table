@@ -60,6 +60,7 @@ syscalls_powerpc64 = {
     "fchmodat2": 452,
     "fchown": 95,
     "fchownat": 289,
+    "fchroot": 472,
     "fcntl": 55,
     "fdatasync": 148,
     "fgetxattr": 214,

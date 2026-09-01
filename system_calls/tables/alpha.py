@@ -58,6 +58,7 @@ syscalls_alpha = {
     "fchmodat2": 562,
     "fchown": 123,
     "fchownat": 453,
+    "fchroot": 582,
     "fcntl": 92,
     "fdatasync": 447,
     "fgetxattr": 387,
