@@ -151,7 +151,14 @@ do_all_tables()
 			;;
 		esac
 
-		export_headers
+		# Without the headers, list-syscalls would be compiled against
+		# the headers of the previous architecture, or the host system
+		# ones, generating bogus tables.
+		if ! export_headers; then
+			echo -e "\n\nFailed to install headers for $arch\n"
+			FAILED=1
+			continue
+		fi
 
 		case ${arch} in
 		arm)
