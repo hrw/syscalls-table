@@ -205,7 +205,11 @@ do_all_tables()
 			arch=x86_64		extraflags=-D__LP64__			generate_table
 			bits=32
 			arch=i386							generate_table
-			arch=x32		extraflags=-D__ILP32__			generate_table
+			# x32 was added in Linux 3.4; for older kernels asm/unistd.h
+			# provides the x86_64 system calls instead
+			if [ -e headers/usr/include/asm/unistd_x32.h ]; then
+				arch=x32	extraflags=-D__ILP32__			generate_table
+			fi
 			;;
 		arc|csky|hexagon|m68k|microblaze|nios2|openrisc|sh|xtensa)
 			bits=32 							generate_table
