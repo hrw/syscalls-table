@@ -22,6 +22,7 @@ fi
 
 KVER=$(make -C ${KERNELSRC} kernelversion -s)
 TEMP=$(mktemp -d)
+FAILED=0
 
 grab_syscall_names_from_tables()
 {
@@ -84,6 +85,7 @@ generate_table()
 		./list-syscalls > "${DATADIR}/tables/syscalls-$arch"
 	else
 		echo -e "\n\nFailed to compile list-syscalls for $arch\n"
+		FAILED=1
 	fi
 }
 
@@ -249,3 +251,5 @@ do_all_tables
 create_tables_for_python
 
 rm -rf $TEMP
+
+exit $FAILED
